@@ -6,6 +6,7 @@ import About from './pages/About';
 import Contact from './pages/contact';
 import Curtains from './pages/Curtains';
 import Blinds from './pages/Blinds';
+import Blogs from './pages/blogs';
 
 import UnderMaintenance from './pages/underMaintenance'
 import './App.css';
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/products/blinds" element={<Blinds />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/blogs" element={<Blogs />} />
       </Routes>
     </Router>
   );
