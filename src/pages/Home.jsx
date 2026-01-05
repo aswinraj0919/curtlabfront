@@ -1,6 +1,7 @@
-import React from 'react';
+import { useEffect, useRef } from "react";
 import Header from '../components/Header';
 import Bottom from '../components/bottom';
+
 import './style.css';
 
 export default function Home() {
@@ -22,6 +23,22 @@ export default function Home() {
 
 
   ];
+   const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const slider = scrollRef.current;
+
+    const onWheel = (e) => {
+      e.preventDefault();
+      slider.scrollLeft += e.deltaY;
+    };
+
+    slider.addEventListener("wheel", onWheel);
+
+    return () => {
+      slider.removeEventListener("wheel", onWheel);
+    };
+  }, []);
   
   return (
     <div className="home-page">
@@ -60,12 +77,13 @@ export default function Home() {
       </section>
 
       {/* Collections Section */}
-      <div className="collection-header">
-        <h1>Our Products</h1>
-      </div>
+
 
       <section className='collections-section'>
-        <div className='collections-grid'>
+              <div className="about-content products">
+        <h1>Our Products</h1>
+      </div>
+        <div className='collections-grid' ref={scrollRef}>
             {products.map((product) => (
 
           <div className='collection-items'>
@@ -93,7 +111,7 @@ export default function Home() {
           <div className="why-us-grid">
             {/* Step 1 */}
             <div className="why-us-step">
-              <div className="step-image-wrapper">
+              <div className="step-image-wrapper step-1">
                 <div className="step-number-overlay">01
                   <div className="step-content">
                     <h3>Book Your Free Consultation</h3>
@@ -146,7 +164,7 @@ export default function Home() {
 
             {/* Step 4 */}
             <div className="why-us-step">
-              <div className="step-image-wrapper">
+              <div className="step-image-wrapper step-4">
                 <div className="step-number-overlay">04
                   <div className="step-content">
                     <h3>Quick Installation</h3>

@@ -3,143 +3,302 @@ import React from 'react';
 export default function Bottom() {
     return (
         <div>
-        <section className="contact-section" id="contact" aria-label="Contact us">
-            <div className="contact-container">
-                <div className="contact-form-wrapper">
-                    <h3>Get in touch with us</h3>
+            <section className="contact-section" id="contact" aria-label="Contact us">
+                <div className="contact-container">
+                    <div className="contact-form-wrapper">
+                        <h3>Get in touch with us</h3>
 
-                    <form className="contact-form" >
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                placeholder="First Name"
-                                required
-                                aria-label="First name"
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                placeholder="Last Name"
-                                required
-                                aria-label="Last name"
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="tel"
-                                placeholder="Phone Number"
-                                required
-                                aria-label="Phone number"
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="email"
-                                placeholder="Email Address"
-                                required
-                                aria-label="Email address"
-                            />
-                        </div>
-                        <div className="form-group">
-                            <textarea
-                                placeholder="Tell us about your project..."
-                                rows="4"
-                                aria-label="Project details"
-                            ></textarea>
-                        </div>
-                        <button type="submit" className="btn-submit">
-                            Submit Request
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                        <form className="contact-form" >
+                            <div className="form-group">
+                                <input
+                                    type="text"
+                                    placeholder="First Name"
+                                    required
+                                    aria-label="First name"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    type="text"
+                                    placeholder="Last Name"
+                                    required
+                                    aria-label="Last name"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    type="tel"
+                                    placeholder="Phone Number"
+                                    required
+                                    aria-label="Phone number"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    type="email"
+                                    placeholder="Email Address"
+                                    required
+                                    aria-label="Email address"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <textarea
+                                    placeholder="Tell us about your project..."
+                                    rows="4"
+                                    aria-label="Project details"
+                                ></textarea>
+                            </div>
+                            <button type="submit" className="btn-submit">
+                                Submit Request
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                                </svg>
+                            </button>
+                        </form>
+
+                        <div class="link">
+                            <a href="#"><svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M28.0212 21.6664L23.8806 17.5258C23.3029 16.9481 22.5967 16.6592 21.7622 16.6592C20.9276 16.6592 20.1894 16.9481 19.5474 17.5258L17.9105 19.1628C15.9846 18.0715 14.4279 16.932 13.2403 15.7444C12.0527 14.5568 10.9132 13.0001 9.82189 11.0742L11.4589 9.43726C12.0366 8.8595 12.3415 8.13731 12.3736 7.27068C12.4057 6.40404 12.1329 5.68185 11.5552 5.10409L7.31829 0.963514C6.74053 0.385759 6.03439 0.0968819 5.19985 0.0968819C4.36532 0.0968819 3.65917 0.385759 3.08142 0.963514C2.63205 1.28449 2.18269 1.76595 1.73332 2.4079C1.02717 3.49922 0.513615 4.71892 0.19264 6.06702C-0.256726 8.37804 0.0963471 10.7212 1.25186 13.0964C2.40737 15.4716 4.5579 18.1999 7.70346 21.2812C10.6564 24.2984 13.7378 26.4168 16.9475 27.6365C18.8734 28.4069 20.6388 28.7921 22.2436 28.7921H22.8214C24.2337 28.5995 25.4213 28.2143 26.3842 27.6365C26.8978 27.2514 27.4434 26.7057 28.0212 25.9996C28.5989 25.2934 28.8878 24.5391 28.8878 23.7367C28.8878 22.9343 28.5989 22.2442 28.0212 21.6664ZM26.6731 24.8441C26.1595 25.486 25.7102 25.9354 25.325 26.1922C24.6188 26.6415 23.7201 26.9304 22.6288 27.0588H22.2436C20.7671 27.0588 19.1623 26.7057 17.429 25.9996C14.5402 24.8441 11.6835 22.854 8.85897 20.0294C6.03439 17.2049 4.07644 14.7333 2.98512 12.6149C1.89381 10.4965 1.54074 8.44224 1.92591 6.45219C2.18269 5.29668 2.63205 4.26956 3.274 3.37083C3.59498 2.92146 3.88385 2.56839 4.14063 2.31161L4.23693 2.21532C4.49371 1.95854 4.79863 1.83015 5.15171 1.83015C5.50478 1.83015 5.8097 1.95854 6.06648 2.21532L10.2071 6.3559C10.4638 6.61268 10.5922 6.9176 10.5922 7.27068C10.5922 7.62375 10.4638 7.92867 10.2071 8.18546L8.28121 10.015C8.08863 10.2718 7.97629 10.5607 7.94419 10.8816C7.91209 11.2026 7.99234 11.4915 8.18492 11.7483C8.69848 12.7754 9.17994 13.5778 9.62931 14.1556C10.3355 15.1827 11.1218 16.1296 11.9885 16.9962C12.8551 17.8629 13.802 18.6492 14.8291 19.3554C15.4069 19.8048 16.2093 20.2862 17.2364 20.7998C17.4932 20.9282 17.75 20.9924 18.0068 20.9924C18.4561 20.9924 18.8092 20.8319 19.066 20.5109L20.7992 18.7776C21.056 18.5209 21.361 18.3925 21.714 18.3925C22.0671 18.3925 22.372 18.5209 22.6288 18.7776L26.7694 22.9182C27.0262 23.175 27.1385 23.4799 27.1064 23.833C27.0743 24.1861 26.9299 24.5231 26.6731 24.8441ZM17.5253 4.43005C18.2956 4.55844 19.0981 4.83126 19.9326 5.24853C20.7671 5.6658 21.5054 6.19541 22.1473 6.83736C22.7893 7.47931 23.3189 8.21755 23.7362 9.05209C24.1534 9.88662 24.3942 10.6891 24.4584 11.4594C24.5226 11.7162 24.6349 11.9248 24.7954 12.0853C24.9559 12.2458 25.1645 12.326 25.4213 12.326H25.5176C25.7744 12.2618 25.9669 12.1334 26.0953 11.9409C26.2237 11.7483 26.2879 11.5236 26.2879 11.2668C26.1595 10.3039 25.8386 9.30887 25.325 8.28175C24.8114 7.25463 24.1695 6.3559 23.3991 5.58556C22.6288 4.81522 21.7301 4.17327 20.703 3.65971C19.6758 3.14614 18.6808 2.82517 17.7179 2.69678C17.4611 2.63259 17.2364 2.68073 17.0438 2.84122C16.8513 3.00171 16.7389 3.21034 16.7068 3.46712C16.6747 3.7239 16.7389 3.94858 16.8994 4.14117C17.0599 4.33375 17.2685 4.43005 17.5253 4.43005ZM16.6587 8.18546C17.108 8.24965 17.5895 8.42619 18.1031 8.71507C18.6166 9.00394 19.0499 9.32492 19.403 9.67799C19.7561 10.0311 20.0771 10.4804 20.3659 11.0261C20.6548 11.5717 20.8313 12.0372 20.8955 12.4223C20.8955 12.6791 20.9918 12.8877 21.1844 13.0482C21.377 13.2087 21.5696 13.289 21.7622 13.289H21.8585C22.1152 13.2248 22.3239 13.0964 22.4844 12.9038C22.6449 12.7112 22.693 12.4865 22.6288 12.2297C22.5646 11.5878 22.3399 10.9137 21.9548 10.2076C21.5696 9.50145 21.1363 8.90765 20.6548 8.42619C20.1733 7.94472 19.5956 7.51141 18.9215 7.12624C18.2475 6.74107 17.5574 6.51638 16.8513 6.45219C16.5945 6.38799 16.3698 6.43614 16.1772 6.59663C15.9846 6.75712 15.8723 6.96575 15.8402 7.22253C15.8081 7.47931 15.8723 7.70399 16.0328 7.89658C16.1933 8.08916 16.4019 8.18546 16.6587 8.18546Z" fill="white" />
                             </svg>
-                        </button>
-                    </form>
-
-                    <div class="link">
-                            <a href="#"><span class="material-symbols-outlined">
-                                    call
-                                </span>+97 123 456 7891</a>
-                            <a href="#"><span class="material-symbols-outlined">
-                                    location_on
-                                </span>15 Square , Dubai</a>
-                            <a href="#"><span class="material-symbols-outlined">
-                                    mail
-                                </span>info@example.com</a>
+                                +97 123 456 7891</a>
+                            <a href="#"><svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M27.1545 12.2291C27.0261 12.1007 26.8656 12.0365 26.673 12.0365L18.0067 13.9624L17.0438 13.6735L19.6437 8.56997C19.9647 7.79963 20.1251 6.99719 20.1251 6.16265C20.1251 5.00714 19.8523 3.96398 19.3067 3.03315C18.761 2.10232 18.0228 1.36408 17.0919 0.81842C16.1611 0.272762 15.134 -6.67572e-05 14.0106 -6.67572e-05C12.8872 -6.67572e-05 11.86 0.272762 10.9292 0.81842C9.99838 1.36408 9.26013 2.10232 8.71448 3.03315C8.16882 3.96398 7.89599 5.00714 7.89599 6.16265C7.89599 6.99719 8.05648 7.79963 8.37745 8.56997L10.207 12.2291L9.43667 12.0365L0.481463 13.9624C0.353073 13.9624 0.240731 14.0265 0.144439 14.1549C0.0481463 14.2833 0 14.4117 0 14.5401V19.1621C0 19.2905 0.064195 19.4189 0.192585 19.5473C0.320975 19.6757 0.449365 19.7399 0.577755 19.7399C0.706145 19.7399 0.834535 19.6757 0.962925 19.5473C1.09132 19.4189 1.15551 19.2905 1.15551 19.1621V14.9253L8.76262 13.2883V25.9989L1.15551 27.6359V23.6879C1.15551 23.4953 1.09132 23.3509 0.962925 23.2546C0.834535 23.1583 0.706145 23.1101 0.577755 23.1101C0.449365 23.1101 0.320975 23.1583 0.192585 23.2546C0.064195 23.3509 0 23.4953 0 23.6879V28.3099C0 28.5025 0.064195 28.647 0.192585 28.7433C0.320975 28.8395 0.449365 28.8877 0.577755 28.8877L9.34038 27.0581L17.9104 28.8877L26.8656 26.9618C26.994 26.9618 27.1064 26.9137 27.2026 26.8174C27.2989 26.7211 27.3471 26.6088 27.3471 26.4804V21.762C27.3471 21.6337 27.2829 21.5213 27.1545 21.425C27.0261 21.3287 26.8977 21.2806 26.7693 21.2806C26.6409 21.2806 26.5125 21.3287 26.3842 21.425C26.2558 21.5213 26.1916 21.6337 26.1916 21.762V25.9989L18.5845 27.6359V14.9253L26.1916 13.2883V17.3326C26.1916 17.461 26.2558 17.5733 26.3842 17.6696C26.5125 17.7659 26.6409 17.8141 26.7693 17.8141C26.8977 17.8141 27.0261 17.7659 27.1545 17.6696C27.2829 17.5733 27.3471 17.461 27.3471 17.3326V12.6143C27.3471 12.4217 27.2829 12.2933 27.1545 12.2291ZM9.0515 6.16265C9.0515 4.75036 9.53296 3.56276 10.4959 2.59983C11.4588 1.63691 12.6304 1.15544 14.0106 1.15544C15.3908 1.15544 16.5784 1.63691 17.5734 2.59983C18.5684 3.56276 19.0659 4.75036 19.0659 6.16265C19.0659 6.80461 18.9054 7.44656 18.5845 8.08851L14.0587 17.3326L9.43667 8.08851C9.17989 7.44656 9.0515 6.80461 9.0515 6.16265ZM9.91813 13.2883L10.8811 13.5772L13.481 18.777C13.6093 19.0338 13.7859 19.1621 14.0106 19.1621C14.2352 19.1621 14.4118 19.0338 14.5402 18.777L16.5623 14.7327L17.5252 14.9253V27.6359L9.91813 25.9989V13.2883ZM17.6215 6.16265C17.6215 5.13554 17.2685 4.2689 16.5623 3.56276C15.8562 2.85661 15.0056 2.50354 14.0106 2.50354C13.0155 2.50354 12.165 2.85661 11.4588 3.56276C10.7527 4.2689 10.3996 5.11949 10.3996 6.11451C10.3996 7.10953 10.7527 7.96012 11.4588 8.66626C12.165 9.37241 13.0155 9.72548 14.0106 9.72548C15.0056 9.72548 15.8562 9.37241 16.5623 8.66626C17.2685 7.96012 17.6215 7.12558 17.6215 6.16265ZM11.5551 6.16265C11.5551 5.45651 11.7958 4.86271 12.2773 4.38124C12.7588 3.89978 13.3365 3.65905 14.0106 3.65905C14.6846 3.65905 15.2784 3.89978 15.792 4.38124C16.3055 4.86271 16.5623 5.44046 16.5623 6.11451C16.5623 6.78856 16.3055 7.38236 15.792 7.89592C15.2784 8.40948 14.6846 8.66626 14.0106 8.66626C13.3365 8.66626 12.7588 8.40948 12.2773 7.89592C11.7958 7.38236 11.5551 6.80461 11.5551 6.16265ZM0.577755 21.9546C0.706145 21.9546 0.834535 21.9065 0.962925 21.8102C1.09132 21.7139 1.15551 21.5855 1.15551 21.425C1.15551 21.2645 1.09132 21.1361 0.962925 21.0399C0.834535 20.9436 0.706145 20.8954 0.577755 20.8954C0.449365 20.8954 0.320975 20.9436 0.192585 21.0399C0.064195 21.1361 0 21.2645 0 21.425C0 21.5855 0.064195 21.7139 0.192585 21.8102C0.320975 21.9065 0.449365 21.9546 0.577755 21.9546ZM26.7693 18.9696C26.6409 18.9696 26.5125 19.0338 26.3842 19.1621C26.2558 19.2905 26.1916 19.4189 26.1916 19.5473C26.1916 19.6757 26.2558 19.8041 26.3842 19.9325C26.5125 20.0609 26.6409 20.1251 26.7693 20.1251C26.8977 20.1251 27.0261 20.0609 27.1545 19.9325C27.2829 19.8041 27.3471 19.6757 27.3471 19.5473C27.3471 19.4189 27.2829 19.2905 27.1545 19.1621C27.0261 19.0338 26.8977 18.9696 26.7693 18.9696Z" fill="white" />
+                            </svg>
+                                15 Square , Dubai</a>
+                            <a href="#"><svg width="29" height="26" viewBox="0 0 29 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M28.7915 8.08869L24.5546 5.10362V0.866745C24.5546 0.609964 24.4744 0.401331 24.3139 0.240843C24.1534 0.0803566 23.9768 0.000112534 23.7843 0.000112534H5.48867C5.23189 0.000112534 5.03931 0.0803566 4.91092 0.240843C4.78253 0.401331 4.68624 0.609964 4.62204 0.866745V5.10362L0.288878 8.08869C0.0962925 8.21708 0 8.40966 0 8.66644V24.3621C0 24.6189 0.0802438 24.8275 0.240731 24.988C0.401219 25.1485 0.609853 25.2288 0.866633 25.2288H28.4063C28.7273 25.2288 28.8878 24.9399 28.8878 24.3621V8.57015C28.8878 8.31337 28.8557 8.15288 28.7915 8.08869ZM24.5546 6.74059L27.4434 8.66644L24.5546 10.8812V6.74059ZM5.97014 1.34821H23.2065V11.8441L14.6365 18.392L5.97014 11.8441V1.34821ZM4.62204 6.74059V10.8812L1.82956 8.66644L4.62204 6.74059ZM1.3481 10.0145L10.5922 17.1402L1.3481 23.3992V10.0145ZM2.88878 23.8807L11.7477 18.0068L14.155 19.7401C14.2834 19.8685 14.4118 19.9327 14.5402 19.9327C14.6686 19.9327 14.7649 19.9006 14.8291 19.8364L17.3327 17.8142L26.2879 23.8807H2.88878ZM27.5397 23.1103L18.4882 17.0439L27.5397 10.0145V23.1103ZM9.34038 5.68137H12.3254C12.4538 5.68137 12.5822 5.61718 12.7106 5.48879C12.839 5.3604 12.9032 5.19991 12.9032 5.00732C12.9032 4.81474 12.839 4.65425 12.7106 4.52586C12.5822 4.39747 12.4538 4.33328 12.3254 4.33328H9.34038C9.14779 4.33328 8.9873 4.39747 8.85891 4.52586C8.73052 4.65425 8.66633 4.81474 8.66633 5.00732C8.66633 5.19991 8.73052 5.3604 8.85891 5.48879C8.9873 5.61718 9.14779 5.68137 9.34038 5.68137ZM9.34038 8.66644H19.9326C20.1251 8.66644 20.2856 8.60225 20.414 8.47386C20.5424 8.34547 20.6066 8.18498 20.6066 7.99239C20.6066 7.79981 20.5424 7.63932 20.414 7.51093C20.2856 7.38254 20.1251 7.31835 19.9326 7.31835H9.34038C9.14779 7.31835 8.9873 7.38254 8.85891 7.51093C8.73052 7.63932 8.66633 7.79981 8.66633 7.99239C8.66633 8.18498 8.73052 8.34547 8.85891 8.47386C8.9873 8.60225 9.14779 8.66644 9.34038 8.66644ZM20.6066 10.9775C20.6066 10.7849 20.5424 10.6244 20.414 10.496C20.2856 10.3676 20.1251 10.3034 19.9326 10.3034H9.34038C9.14779 10.3034 8.9873 10.3676 8.85891 10.496C8.73052 10.6244 8.66633 10.7849 8.66633 10.9775C8.66633 11.17 8.73052 11.3305 8.85891 11.4589C8.9873 11.5873 9.14779 11.6515 9.34038 11.6515H19.9326C20.1251 11.6515 20.2856 11.5873 20.414 11.4589C20.5424 11.3305 20.6066 11.17 20.6066 10.9775Z" fill="white" />
+                            </svg>
+                                info@example.com</a>
                         </div>
+                    </div>
+
+                    <div className="contact-info">
+                        <img src="/images/contact.jpg" alt="" />
+
+
+                    </div>
                 </div>
+            </section>
 
-                <div className="contact-info">
-                    <img src="/images/contact.jpg" alt="" />
+            {/* Footer */}
+            <footer className="footer" aria-label="Footer">
+<svg width="214" height="44" viewBox="0 0 214 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_in_2079_18)">
+<path d="M191.932 0V21.1939L192.671 18.9501C197.641 9.31262 209.524 13.2494 212.271 22.6204C215.817 34.7199 207.199 45.9159 194.344 42.1974C191.145 41.2735 187.99 39.1846 185.46 42.7685V6.66275C185.46 6.05358 184.94 4.24639 184.643 3.67276C184.259 2.93669 183.615 2.4722 183.049 1.90364L191.932 0ZM197.745 18.44C194.26 18.7978 192.153 20.9401 191.927 24.425C191.668 28.4277 192.128 32.7071 191.935 36.7378C192.097 37.5931 195.047 39.0069 195.872 39.2734C201.425 41.0755 205.517 37.6972 206.362 32.2604C207.326 26.0748 205.783 17.61 197.742 18.4374L197.745 18.44Z" fill="#CEAD56"/>
+</g>
+<g filter="url(#filter1_in_2079_18)">
+<path d="M35.4526 2.28436V17.7673C35.2318 17.7343 35.2318 17.5135 35.1632 17.3587C32.7748 11.7848 30.229 7.04346 23.5485 6.0028C11.3042 4.09409 4.7278 15.3738 7.84977 26.2703C11.2586 38.1617 27.0664 40.8522 34.7571 31.603L37.2293 27.9226C36.1506 35.1641 31.4575 41.1923 24.0587 42.606C12.0809 44.8904 0.717456 37.1566 0.0397591 24.689C-0.818149 8.92426 12.3322 -1.23865 27.4268 3.39354C29.8026 4.12201 32.7088 6.03072 34.6886 3.48746C35.0033 3.08389 35.1175 2.62701 35.4526 2.28436Z" fill="#CEAD56"/>
+</g>
+<g filter="url(#filter2_in_2079_18)">
+<path d="M49.2862 14.0869V33.0599C49.2862 37.6895 54.1138 38.6718 57.7891 37.7555C60.9492 36.9687 61.34 34.2401 61.4746 31.4151C61.6319 28.047 61.6269 23.8615 61.4746 20.4908C61.3933 18.6861 61.2081 16.3053 59.9491 14.9093L58.9313 14.0869H67.815V37.8824C67.815 38.088 68.0789 39.1642 68.1602 39.4409C68.5307 40.7227 69.1983 41.5704 70.2262 42.3877H61.4695V35.1539C61.2842 35.126 61.2918 35.3773 61.2537 35.5092C59.6521 41.0323 56.9185 43.6746 50.7609 42.8801C39.0877 41.375 44.06 25.4428 42.6513 17.7394C42.3772 16.2368 41.7478 15.0159 40.5294 14.0869H49.2862Z" fill="#CEAD56"/>
+</g>
+<g filter="url(#filter3_in_2079_18)">
+<path d="M181.779 42.3878H173.023V34.6463L172.157 37.1439C168.032 46.558 152.722 44.129 154.933 33.2452C156.336 26.3337 165.167 25.887 170.512 24.2042C172.558 23.5595 173.226 22.8894 173.02 20.6253C172.403 13.7849 160.334 17.1709 158.146 21.6102L156.524 24.6205V13.5793L157.705 14.7469C158.057 14.9423 158.733 15.1099 159.128 15.1124C161.41 15.1175 164.715 13.8331 167.251 13.5793C173.467 12.9625 178.883 14.5794 179.368 21.6381C179.713 26.6637 179.043 32.0904 179.363 37.1261C179.492 39.1567 180.048 41.172 181.779 42.3878ZM173.023 32.2985C173.264 30.1486 172.842 27.5774 173.023 25.3819C172.759 25.5977 172.624 25.9124 172.325 26.1434C170.337 27.6764 165.758 27.8566 163.286 29.542C160.024 31.7655 160.23 37.3901 164.39 38.3952C168.492 39.3851 172.553 36.4814 173.025 32.2985H173.023Z" fill="#CEAD56"/>
+</g>
+<g filter="url(#filter4_in_2079_18)">
+<path d="M133.3 2.91895C131.556 4.43424 131.17 6.48003 131.018 8.69587V38.8343H143.516C145.613 38.8343 148.037 36.8038 148.933 34.9864L151.194 29.6969V42.8954L147.963 42.3827L121.497 42.3878L122.576 41.502C123.69 40.238 124.033 38.6389 124.167 37.0018C123.66 27.5546 124.825 17.4298 124.16 8.06132C124.013 5.97493 123.343 4.17789 121.624 2.91895H133.3Z" fill="#CEAD56"/>
+</g>
+<g filter="url(#filter5_in_2079_18)">
+<path d="M109.441 14.2138C112.563 14.1072 115.703 14.2062 118.579 12.8178L116.294 18.2749L114.583 17.3866H109.444V34.8366C109.444 35.0752 109.834 36.192 109.966 36.4712C111.307 39.3013 115.335 38.5932 116.987 36.4154L117.947 34.7757C117.848 38.7429 115.583 42.205 111.505 42.8624C107.555 43.4995 104.291 41.6187 103.288 37.6946C103.207 37.3723 102.971 36.3646 102.971 36.1083V17.2622H97.641L98.5243 14.4017C100.524 14.1935 102.448 14.7799 103.857 13.0082C105.834 10.5208 107.273 6.49267 109.124 3.80727L109.444 3.42908V14.2164L109.441 14.2138Z" fill="#CEAD56"/>
+</g>
+<g filter="url(#filter6_in_2079_18)">
+<path d="M82.5361 23.0975L83.3331 19.5162C84.356 15.8637 86.5084 12.7087 90.7903 13.6377C92.3209 13.9702 93.0468 14.7926 94.755 14.186C95.2753 14.0007 95.6281 13.6504 96.1155 13.455L93.4478 20.9401C89.7903 17.1683 84.6048 18.3841 83.0412 23.4123C82.1986 26.1256 82.3356 33.56 82.5311 36.6185C82.6554 38.5754 83.1809 40.3648 84.8814 41.502L86.5972 42.3878H73.7794C75.4825 41.1314 76.0714 39.177 76.1958 37.1261C76.5587 31.2121 75.914 24.9276 76.1881 18.973C75.9902 17.6227 75.7439 16.1835 74.8581 15.0997L73.7769 14.087H82.5336V23.0975H82.5361Z" fill="#CEAD56"/>
+</g>
+<defs>
+<filter id="filter0_in_2079_18" x="183.049" y="0" width="30.0239" height="46.9226" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
+<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect2_noise_2079_18">
+<feMergeNode in="effect1_innerShadow_2079_18" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+<filter id="filter1_in_2079_18" x="0" y="2.2677" width="37.2294" height="44.7372" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
+<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect2_noise_2079_18">
+<feMergeNode in="effect1_innerShadow_2079_18" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+<filter id="filter2_in_2079_18" x="40.5294" y="14.0869" width="29.6968" height="32.9319" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
+<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect2_noise_2079_18">
+<feMergeNode in="effect1_innerShadow_2079_18" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+<filter id="filter3_in_2079_18" x="154.716" y="13.459" width="27.0635" height="33.5306" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
+<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect2_noise_2079_18">
+<feMergeNode in="effect1_innerShadow_2079_18" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+<filter id="filter4_in_2079_18" x="121.497" y="2.91895" width="29.6968" height="43.9764" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
+<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect2_noise_2079_18">
+<feMergeNode in="effect1_innerShadow_2079_18" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+<filter id="filter5_in_2079_18" x="97.641" y="3.42908" width="20.9375" height="43.5552" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
+<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect2_noise_2079_18">
+<feMergeNode in="effect1_innerShadow_2079_18" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+<filter id="filter6_in_2079_18" x="73.7769" y="13.455" width="22.3386" height="32.9329" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
+<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect2_noise_2079_18">
+<feMergeNode in="effect1_innerShadow_2079_18" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+</defs>
+</svg>                <div className='media-footer'>
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.6676 0H1.32891C0.594141 0 0 0.580078 0 1.29727V16.6992C0 17.4164 0.594141 18 1.32891 18H16.6676C17.4023 18 18 17.4164 18 16.7027V1.29727C18 0.580078 17.4023 0 16.6676 0ZM5.34023 15.3387H2.66836V6.74648H5.34023V15.3387ZM4.0043 5.57578C3.14648 5.57578 2.45391 4.8832 2.45391 4.02891C2.45391 3.17461 3.14648 2.48203 4.0043 2.48203C4.85859 2.48203 5.55117 3.17461 5.55117 4.02891C5.55117 4.87969 4.85859 5.57578 4.0043 5.57578ZM15.3387 15.3387H12.6703V11.1621C12.6703 10.1672 12.6527 8.88398 11.2816 8.88398C9.89297 8.88398 9.68203 9.97031 9.68203 11.0918V15.3387H7.01719V6.74648H9.57656V7.9207H9.61172C9.9668 7.2457 10.8387 6.53203 12.1359 6.53203C14.8395 6.53203 15.3387 8.31094 15.3387 10.6242V15.3387Z" fill="#BFBFBF" />
+                    </svg>
+                    <svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24.949 3.8243C24.949 3.8243 24.7029 2.08687 23.9449 1.32398C22.9852 0.319922 21.9122 0.315 21.42 0.255937C17.8959 -1.40816e-07 12.6049 0 12.6049 0H12.5951C12.5951 0 7.30406 -1.40816e-07 3.78 0.255937C3.28781 0.315 2.21484 0.319922 1.25508 1.32398C0.497109 2.08687 0.255938 3.8243 0.255938 3.8243C0.255938 3.8243 0 5.86688 0 7.90453V9.81422C0 11.8519 0.251016 13.8945 0.251016 13.8945C0.251016 13.8945 0.497109 15.6319 1.25016 16.3948C2.20992 17.3988 3.46992 17.3644 4.03102 17.4727C6.04899 17.6646 12.6 17.7237 12.6 17.7237C12.6 17.7237 17.8959 17.7138 21.42 17.4628C21.9122 17.4037 22.9852 17.3988 23.9449 16.3948C24.7029 15.6319 24.949 13.8945 24.949 13.8945C24.949 13.8945 25.2 11.8568 25.2 9.81422V7.90453C25.2 5.86688 24.949 3.8243 24.949 3.8243ZM9.99633 12.1324V5.04984L16.8033 8.60344L9.99633 12.1324Z" fill="#BFBFBF" />
+                    </svg>
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.99982 0C4.0294 0 0 4.04428 0 9.03306C0 13.2692 2.90586 16.8239 6.82582 17.8002V11.7936H4.97006V9.03306H6.82582V7.84359C6.82582 4.76909 8.21216 3.34404 11.2195 3.34404C11.7898 3.34404 12.7736 3.45641 13.1761 3.56842V6.07058C12.9637 6.04818 12.5947 6.03698 12.1364 6.03698C10.6608 6.03698 10.0906 6.59811 10.0906 8.05677V9.03306H13.0303L12.5252 11.7936H10.0906V18C14.5469 17.4598 18 13.6515 18 9.03306C17.9996 4.04428 13.9702 0 8.99982 0Z" fill="#BFBFBF" />
+                    </svg>
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 18L1.27129 13.3778C0.486812 12.0247 0.0746044 10.491 0.075358 8.91825C0.0776187 4.00125 4.09797 0 9.03768 0C11.4348 0.00075 13.685 0.93 15.3775 2.616C17.0693 4.302 18.0008 6.543 18 8.9265C17.9977 13.8443 13.9774 17.8455 9.03768 17.8455C7.53805 17.8448 6.06029 17.4705 4.75132 16.7595L0 18ZM4.97136 15.1448C6.23436 15.891 7.44009 16.338 9.03466 16.3387C13.1402 16.3387 16.4846 13.0133 16.4868 8.925C16.4883 4.8285 13.1598 1.5075 9.04069 1.506C4.93218 1.506 1.59005 4.8315 1.58855 8.919C1.58779 10.5878 2.07913 11.8372 2.9043 13.1445L2.15147 15.8805L4.97136 15.1448ZM13.5524 11.0468C13.4966 10.9537 13.3474 10.8982 13.1228 10.7865C12.899 10.6748 11.798 10.1355 11.5923 10.0612C11.3873 9.987 11.2381 9.9495 11.0882 10.173C10.939 10.3958 10.5094 10.8982 10.379 11.0468C10.2487 11.1953 10.1176 11.214 9.89374 11.1023C9.66993 10.9905 8.948 10.7557 8.09269 9.996C7.42728 9.405 6.97739 8.67525 6.84702 8.45175C6.71665 8.229 6.83346 8.10825 6.94499 7.99725C7.04597 7.8975 7.1688 7.737 7.28108 7.6065C7.39487 7.4775 7.4318 7.3845 7.50716 7.23525C7.58176 7.08675 7.54484 6.95625 7.48832 6.8445C7.4318 6.7335 6.98417 5.63625 6.79804 5.19C6.61567 4.75575 6.43105 4.81425 6.2939 4.8075L5.86436 4.8C5.71515 4.8 5.47249 4.8555 5.26752 5.079C5.06255 5.3025 4.4838 5.841 4.4838 6.93825C4.4838 8.0355 5.28636 9.09525 5.39789 9.24375C5.51017 9.39225 6.97664 11.6438 9.22306 12.609C9.75735 12.8385 10.1748 12.9757 10.4996 13.0785C11.0362 13.248 11.5245 13.224 11.9103 13.167C12.3406 13.1032 13.2351 12.6277 13.422 12.1073C13.6089 11.586 13.6089 11.1398 13.5524 11.0468Z" fill="#BFBFBF" />
+                    </svg>
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_2079_31)">
+                            <path d="M9 1.6207C11.4047 1.6207 11.6895 1.63125 12.6352 1.67344C13.5141 1.71211 13.9887 1.85977 14.3051 1.98281C14.7234 2.14453 15.0258 2.34141 15.3387 2.6543C15.6551 2.9707 15.8484 3.26953 16.0102 3.68789C16.1332 4.0043 16.2809 4.48242 16.3195 5.35781C16.3617 6.30703 16.3723 6.5918 16.3723 8.99297C16.3723 11.3977 16.3617 11.6824 16.3195 12.6281C16.2809 13.507 16.1332 13.9816 16.0102 14.298C15.8484 14.7164 15.6516 15.0188 15.3387 15.3316C15.0223 15.648 14.7234 15.8414 14.3051 16.0031C13.9887 16.1262 13.5105 16.2738 12.6352 16.3125C11.6859 16.3547 11.4012 16.3652 9 16.3652C6.59531 16.3652 6.31055 16.3547 5.36484 16.3125C4.48594 16.2738 4.01133 16.1262 3.69492 16.0031C3.27656 15.8414 2.97422 15.6445 2.66133 15.3316C2.34492 15.0152 2.15156 14.7164 1.98984 14.298C1.8668 13.9816 1.71914 13.5035 1.68047 12.6281C1.63828 11.6789 1.62773 11.3941 1.62773 8.99297C1.62773 6.58828 1.63828 6.30352 1.68047 5.35781C1.71914 4.47891 1.8668 4.0043 1.98984 3.68789C2.15156 3.26953 2.34844 2.96719 2.66133 2.6543C2.97773 2.33789 3.27656 2.14453 3.69492 1.98281C4.01133 1.85977 4.48945 1.71211 5.36484 1.67344C6.31055 1.63125 6.59531 1.6207 9 1.6207ZM9 0C6.55664 0 6.25078 0.0105469 5.29102 0.0527344C4.33477 0.0949219 3.67734 0.249609 3.10781 0.471094C2.51367 0.703125 2.01094 1.00898 1.51172 1.51172C1.00898 2.01094 0.703125 2.51367 0.471094 3.1043C0.249609 3.67734 0.0949219 4.33125 0.0527344 5.2875C0.0105469 6.25078 0 6.55664 0 9C0 11.4434 0.0105469 11.7492 0.0527344 12.709C0.0949219 13.6652 0.249609 14.3227 0.471094 14.8922C0.703125 15.4863 1.00898 15.9891 1.51172 16.4883C2.01094 16.9875 2.51367 17.2969 3.1043 17.5254C3.67734 17.7469 4.33125 17.9016 5.2875 17.9438C6.24727 17.9859 6.55313 17.9965 8.99648 17.9965C11.4398 17.9965 11.7457 17.9859 12.7055 17.9438C13.6617 17.9016 14.3191 17.7469 14.8887 17.5254C15.4793 17.2969 15.982 16.9875 16.4813 16.4883C16.9805 15.9891 17.2898 15.4863 17.5184 14.8957C17.7398 14.3227 17.8945 13.6688 17.9367 12.7125C17.9789 11.7527 17.9895 11.4469 17.9895 9.00352C17.9895 6.56016 17.9789 6.2543 17.9367 5.29453C17.8945 4.33828 17.7398 3.68086 17.5184 3.11133C17.2969 2.51367 16.991 2.01094 16.4883 1.51172C15.9891 1.0125 15.4863 0.703125 14.8957 0.474609C14.3227 0.253125 13.6688 0.0984375 12.7125 0.05625C11.7492 0.0105469 11.4434 0 9 0Z" fill="#BFBFBF" />
+                            <path d="M9 4.37695C6.44766 4.37695 4.37695 6.44766 4.37695 9C4.37695 11.5523 6.44766 13.623 9 13.623C11.5523 13.623 13.623 11.5523 13.623 9C13.623 6.44766 11.5523 4.37695 9 4.37695ZM9 11.9988C7.34414 11.9988 6.00117 10.6559 6.00117 9C6.00117 7.34414 7.34414 6.00117 9 6.00117C10.6559 6.00117 11.9988 7.34414 11.9988 9C11.9988 10.6559 10.6559 11.9988 9 11.9988Z" fill="#BFBFBF" />
+                            <path d="M14.8852 4.19417C14.8852 4.79182 14.4 5.27346 13.8059 5.27346C13.2082 5.27346 12.7266 4.78831 12.7266 4.19417C12.7266 3.59651 13.2117 3.11487 13.8059 3.11487C14.4 3.11487 14.8852 3.60003 14.8852 4.19417Z" fill="#BFBFBF" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_2079_31">
+                                <rect width="18" height="18" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_2079_38)">
+                            <path d="M13.7447 1.42798H16.2748L10.7473 7.7456L17.25 16.3425H12.1584L8.17053 11.1285L3.60746 16.3425H1.07582L6.98808 9.58505L0.75 1.42798H5.97083L9.57555 6.19373L13.7447 1.42798ZM12.8567 14.8281H14.2587L5.20905 2.86283H3.7046L12.8567 14.8281Z" fill="#BFBFBF" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_2079_38">
+                                <rect width="18" height="18" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
                 </div>
-            </div>
-        </section>
-
-      {/* Footer */ }
-    <footer className="footer" aria-label="Footer">
-        <div className="footer-content">
-            <div className="footer-section">
-                <h4>CurtLab</h4>
-                <p>Premium window solutions since 2025</p>
-                <div className="footer-certifications">
-                    <span>✓ Premium Quality</span>
-                    <span>✓ Professional Installation</span>
-                    <span>✓ 5-Year Warranty</span>
-                </div>
-            </div>
-
-            <div className="footer-section">
-                <h4>Quick Links</h4>
-                <nav className="footer-nav">
-                    <a href="/">Home</a>
-                    <a href="/products">Products</a>
-                    <a href="/about">About Us</a>
-                    <a href="/services">Services</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-            </div>
-
-            <div className="footer-section">
-                <h4>Contact</h4>
-                <p>Email: info@curtlab.com</p>
-                <p>Phone: +1 (555) 123-4567</p>
-                <p>Hours: Mon-Fri 9AM-6PM</p>
-            </div>
-
-            <div className="footer-section">
-                <h4>Follow Us</h4>
-                <div className="social-links">
-                    <a href="https://facebook.com" aria-label="Facebook">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                        </svg>
-                        <span>Facebook</span>
-                    </a>
-                    <a href="https://instagram.com" aria-label="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                        <span>Instagram</span>
-                    </a>
-                    <a href="https://twitter.com" aria-label="Twitter">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.213c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                        </svg>
-                        <span>Twitter</span>
-                    </a>
-                </div>
-            </div>
+                <h6>All rights reserved to CurtLab</h6>
+            </footer>
         </div>
-
-        <div className="footer-bottom">
-            <p>&copy; {new Date().getFullYear()} CurtLab. All rights reserved.</p>
-            <div className="footer-links">
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
-                <a href="/sitemap">Sitemap</a>
-            </div>
-        </div>
-    </footer>
-    </div>
-  );
+    );
 };

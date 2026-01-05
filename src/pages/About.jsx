@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Bottom from '../components/bottom';
+import Arrow from '../components/arrow'
 import './style.css';
 
 export default function About() {
@@ -82,10 +83,10 @@ export default function About() {
               <div className='ourService'>
                 <h2>Our services include:</h2>
                 <div className='points'>
-                  <p>Free consultation and expert guidance</p>
-                  <p>Professional on-site measurements</p>
-                  <p>Curated fabric and style selection</p>
-                  <p>Quick, clean, and reliable installation</p>
+                  <p><Arrow />Free consultation and expert guidance</p>
+                  <p><Arrow />Professional on-site measurements</p>
+                  <p><Arrow />Curated fabric and style selection</p>
+                  <p><Arrow />Quick, clean, and reliable installation</p>
                 </div>
               </div>
               <p>By managing the entire journey in-house, we ensure consistency, quality, and peace of mind from start to finish.</p>
@@ -130,7 +131,7 @@ export default function About() {
 
       </section>
 
-      {/* <Bottom /> */}
+      <Bottom />
 
     </div>
   );

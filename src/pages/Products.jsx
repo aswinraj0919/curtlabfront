@@ -48,16 +48,28 @@ export default function Products() {
             <div className='category-item'>
               <div className='category-name'>
                 <h2>Curtain's</h2>
-                <button className='btn btn-secondary'>Book Now</button>
+                <Link
+              to="/products/curtains"
+              className={`product-link ${location.pathname === '/products/curtains' ? 'active' : ''}`}
+            // onClick={closeMenu}
+            >
+                <button className='btn btn-secondary product'>Book Now</button>
+            </Link>
               </div>
-              <img src="/images/category-1.jpg" alt="" />
+              <img src="/images/Frame 69.png" alt="" />
             </div>
             <div className='category-item'>
               <div className='category-name'>
-                <h2>Curtain's</h2>
-                <button className='btn btn-secondary'>Book Now</button>
+                <h2>Blind's</h2>
+                <Link
+              to="/products/blinds"
+              className={`product-link ${location.pathname === '/products/blinds' ? 'active' : ''}`}
+            // onClick={closeMenu}
+            >
+                <button className='btn btn-secondary product'>Book Now</button>
+            </Link>
               </div>
-              <img src="/images/category-1.jpg" alt="" />
+              <img src="/images/Frame 70.png" alt="" />
             </div>
           </div>
         </div>
