@@ -31,72 +31,83 @@ export default function Curtains() {
       <ProductsHead />
 
       {/* Products Grid Section */}
-      <section className="products-grid-section" aria-label="Product collections">
-        <div className='about-content products'>
-          <h1>Shop by Categories</h1>
-          <div className='products-grid category'>
-            <div className='category-item'>
-              <div className='category-name'>
-                <h2>Curtain's</h2>
-                <button className='btn btn-secondary'>Book Now</button>
-              </div>
-              <img src="/images/category-1.jpg" alt="" />
-            </div>
-            <div className='category-item'>
-              <div className='category-name'>
-                <h2>Curtain's</h2>
-                <button className='btn btn-secondary'>Book Now</button>
-              </div>
-              <img src="/images/category-1.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div className="products-container">
-          <div className="about-content products">
-            <h1>Our  Products</h1>
-          </div>
-          <div className='select-Categories'>
-            <Link
-              to="/products"
-              className={`product-link ${location.pathname === '/products' ? 'active' : ''}`}
-            // onClick={closeMenu}
-            >
-              All Product’s
-            </Link>
-            <Link
-              to="/products/curtains"
-              className={`product-link ${location.pathname === '/products/curtains' ? 'active' : ''}`}
-            // onClick={closeMenu}
-            >
-              Curtains
-            </Link>
-            <Link
-              to="/products/blinds"
-              className={`product-link ${location.pathname === '/products/blinds' ? 'active' : ''}`}
-            // onClick={closeMenu}
-            >
-              Blinds
-            </Link>
-          </div>
-
-          <div className="products-grid">
-            {products.map((product) => (
-              <div className='collection-items'>
-                <img src={product.image} />
-                <div className="collection-content">
-                  <h1>{product.name}</h1>
-                  <p>{product.content}</p>
-                  <div className='collection-btn'>
-                    <button className='btn btn-secondary'>Book Now</button>
-                    <button className='btn btn-primary'>Know More</button>
+            <section className="products-grid-section" aria-label="Product collections">
+              <div className='about-content products'>
+                <h1>Shop by Categories</h1>
+                <div className='products-grid category'>
+                  <div className='category-item'>
+                    <div className='category-name'>
+                      <h2>Curtain's</h2>
+                      <Link
+                    to="/products/curtains"
+                    className={`product-link ${location.pathname === '/products/curtains' ? 'active' : ''}`}
+                  // onClick={closeMenu}
+                  >
+                      <button className='btn btn-secondary product'>Book Now</button>
+                  </Link>
+                    </div>
+                    <img src="/images/Frame 69.png" alt="" />
+                  </div>
+                  <div className='category-item'>
+                    <div className='category-name'>
+                      <h2>Blind's</h2>
+                      <Link
+                    to="/products/blinds"
+                    className={`product-link ${location.pathname === '/products/blinds' ? 'active' : ''}`}
+                  // onClick={closeMenu}
+                  >
+                      <button className='btn btn-secondary product'>Book Now</button>
+                  </Link>
+                    </div>
+                    <img src="/images/Frame 70.png" alt="" />
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+              <div className="products-container">
+                <div className="about-content products">
+                  <h1>Our  Products</h1>
+                </div>
+                <div className='select-Categories'>
+                  <Link
+                    to="/products"
+                    className={`product-link ${location.pathname === '/products' ? 'active' : ''}`}
+                  // onClick={closeMenu}
+                  >
+                    All Product’s
+                  </Link>
+                  <Link
+                    to="/products/curtains"
+                    className={`product-link ${location.pathname === '/products/curtains' ? 'active' : ''}`}
+                  // onClick={closeMenu}
+                  >
+                    Curtains
+                  </Link>
+                  <Link
+                    to="/products/blinds"
+                    className={`product-link ${location.pathname === '/products/blinds' ? 'active' : ''}`}
+                  // onClick={closeMenu}
+                  >
+                    Blinds
+                  </Link>
+                </div>
+      
+                <div className="products-grid">
+                  {products.map((product) => (
+                    <div className='collection-items'>
+                      <img src={product.image} />
+                      <div className="collection-content">
+                        <h1>{product.name}</h1>
+                        <p>{product.content}</p>
+                        <div className='collection-btn'>
+                          <button className='btn btn-secondary'>Book Now</button>
+                          <button className='btn btn-primary'>Know More</button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
       {/* Contact Section */}
       <Bottom />
 
