@@ -1,6 +1,147 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Logo from '../components/logo'
 
 export default function Bottom() {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        projectDetails: ''
+    });
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitMessage, setSubmitMessage] = useState('');
+
+    // Replace this with your actual Google Form ID
+    // Get it from your Google Form URL: https://docs.google.com/forms/d/e/[FORM_ID]/formResponse
+    const GOOGLE_FORM_ID = '1FAIpQLSdIg6Ybe_HP6W0mEonpbD1aDe1mA4EZHNtF2w9eh6LchCg7Jg';
+
+    // Replace these with your actual Google Form entry IDs
+    // To find them: submit a test form and check the spreadsheet column headers
+    const ENTRY_IDS = {
+        firstName: 'entry.665258351',    // Replace with your actual entry ID
+        lastName: 'entry.804667590',     // Replace with your actual entry ID
+        phone: 'entry.623876857',        // Replace with your actual entry ID
+        email: 'entry.1899017098',        // Replace with your actual entry ID
+        projectDetails: 'entry.621813638' // Replace with your actual entry ID
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitMessage('');
+
+        try {
+            // Create FormData object for Google Forms
+            const formDataToSubmit = new FormData();
+
+            // Map form fields to Google Forms entry IDs
+            formDataToSubmit.append(ENTRY_IDS.firstName, formData.firstName);
+            formDataToSubmit.append(ENTRY_IDS.lastName, formData.lastName);
+            formDataToSubmit.append(ENTRY_IDS.phone, formData.phone);
+            formDataToSubmit.append(ENTRY_IDS.email, formData.email);
+            formDataToSubmit.append(ENTRY_IDS.projectDetails, formData.projectDetails);
+
+            // Add timestamp for tracking
+            formDataToSubmit.append('entry.timestamp', new Date().toISOString());
+
+            // Submit to Google Forms
+            const response = await fetch(
+                `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`,
+                {
+                    method: 'POST',
+                    mode: 'no-cors', // Important: Google Forms doesn't support CORS
+                    body: formDataToSubmit,
+                    redirect: 'follow'
+                }
+            );
+
+            // Since we use no-cors mode, we won't get a response back
+            // But the submission will still work
+            setSubmitMessage('Thank you! Your request has been submitted successfully.');
+
+            // Reset form
+            setFormData({
+                firstName: '',
+                lastName: '',
+                phone: '',
+                email: '',
+                projectDetails: ''
+            });
+
+        } catch (error) {
+            console.error('Form submission error:', error);
+            setSubmitMessage('Error: Failed to submit form. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    // Alternative method using hidden iframe (works better for some browsers)
+    const handleSubmitAlternative = (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitMessage('');
+
+        // Create a hidden iframe to handle the response
+        const iframe = document.createElement('iframe');
+        iframe.name = 'hidden_iframe';
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create a hidden form
+        const hiddenForm = document.createElement('form');
+        hiddenForm.style.display = 'none';
+        hiddenForm.method = 'POST';
+        hiddenForm.action = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
+        hiddenForm.target = 'hidden_iframe';
+
+        // Add form fields
+        const addField = (name, value) => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = name;
+            input.value = value;
+            hiddenForm.appendChild(input);
+        };
+
+        addField(ENTRY_IDS.firstName, formData.firstName);
+        addField(ENTRY_IDS.lastName, formData.lastName);
+        addField(ENTRY_IDS.phone, formData.phone);
+        addField(ENTRY_IDS.email, formData.email);
+        addField(ENTRY_IDS.projectDetails, formData.projectDetails);
+        addField('entry.timestamp', new Date().toISOString());
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Clean up and show message
+        setTimeout(() => {
+            setSubmitMessage('Thank you! Your request has been submitted successfully.');
+            setFormData({
+                firstName: '',
+                lastName: '',
+                phone: '',
+                email: '',
+                projectDetails: ''
+            });
+            setIsSubmitting(false);
+
+            // Clean up DOM
+            document.body.removeChild(hiddenForm);
+            document.body.removeChild(iframe);
+        }, 1000);
+    };
+
     return (
         <div>
             <section className="contact-section" id="contact" aria-label="Contact us">
@@ -8,48 +149,78 @@ export default function Bottom() {
                     <div className="contact-form-wrapper">
                         <h3>Get in touch with us</h3>
 
-                        <form className="contact-form" >
+                        {submitMessage && (
+                            <div className={`submit-message ${submitMessage.includes('Thank you') ? 'success' : 'error'}`}>
+                                {submitMessage}
+                            </div>
+                        )}
+
+                        <form
+                            className="contact-form"
+                            onSubmit={handleSubmit}
+                        // If fetch doesn't work, use onSubmit={handleSubmitAlternative}
+                        >
                             <div className="form-group">
                                 <input
                                     type="text"
+                                    name="firstName"
                                     placeholder="First Name"
                                     required
                                     aria-label="First name"
+                                    value={formData.firstName}
+                                    onChange={handleChange}
                                 />
                             </div>
                             <div className="form-group">
                                 <input
                                     type="text"
+                                    name="lastName"
                                     placeholder="Last Name"
                                     required
                                     aria-label="Last name"
+                                    value={formData.lastName}
+                                    onChange={handleChange}
                                 />
                             </div>
                             <div className="form-group">
                                 <input
                                     type="tel"
+                                    name="phone"
                                     placeholder="Phone Number"
                                     required
                                     aria-label="Phone number"
+                                    value={formData.phone}
+                                    onChange={handleChange}
                                 />
                             </div>
                             <div className="form-group">
                                 <input
                                     type="email"
+                                    name="email"
                                     placeholder="Email Address"
                                     required
                                     aria-label="Email address"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                 />
                             </div>
                             <div className="form-group">
                                 <textarea
+                                    name="projectDetails"
                                     placeholder="Tell us about your project..."
                                     rows="4"
                                     aria-label="Project details"
+                                    required
+                                    value={formData.projectDetails}
+                                    onChange={handleChange}
                                 ></textarea>
                             </div>
-                            <button type="submit" className="btn-submit">
-                                Submit Request
+                            <button
+                                type="submit"
+                                className="btn-submit"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'Sending...' : 'Submit Request'}
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="white" strokeWidth="2" strokeLinecap="round" />
                                 </svg>
@@ -74,193 +245,13 @@ export default function Bottom() {
 
                     <div className="contact-info">
                         <img src="/images/contact.jpg" alt="" />
-
-
                     </div>
                 </div>
-            </section>
+            </section >
 
-            {/* Footer */}
             <footer className="footer" aria-label="Footer">
-<svg width="214" height="44" viewBox="0 0 214 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_in_2079_18)">
-<path d="M191.932 0V21.1939L192.671 18.9501C197.641 9.31262 209.524 13.2494 212.271 22.6204C215.817 34.7199 207.199 45.9159 194.344 42.1974C191.145 41.2735 187.99 39.1846 185.46 42.7685V6.66275C185.46 6.05358 184.94 4.24639 184.643 3.67276C184.259 2.93669 183.615 2.4722 183.049 1.90364L191.932 0ZM197.745 18.44C194.26 18.7978 192.153 20.9401 191.927 24.425C191.668 28.4277 192.128 32.7071 191.935 36.7378C192.097 37.5931 195.047 39.0069 195.872 39.2734C201.425 41.0755 205.517 37.6972 206.362 32.2604C207.326 26.0748 205.783 17.61 197.742 18.4374L197.745 18.44Z" fill="#CEAD56"/>
-</g>
-<g filter="url(#filter1_in_2079_18)">
-<path d="M35.4526 2.28436V17.7673C35.2318 17.7343 35.2318 17.5135 35.1632 17.3587C32.7748 11.7848 30.229 7.04346 23.5485 6.0028C11.3042 4.09409 4.7278 15.3738 7.84977 26.2703C11.2586 38.1617 27.0664 40.8522 34.7571 31.603L37.2293 27.9226C36.1506 35.1641 31.4575 41.1923 24.0587 42.606C12.0809 44.8904 0.717456 37.1566 0.0397591 24.689C-0.818149 8.92426 12.3322 -1.23865 27.4268 3.39354C29.8026 4.12201 32.7088 6.03072 34.6886 3.48746C35.0033 3.08389 35.1175 2.62701 35.4526 2.28436Z" fill="#CEAD56"/>
-</g>
-<g filter="url(#filter2_in_2079_18)">
-<path d="M49.2862 14.0869V33.0599C49.2862 37.6895 54.1138 38.6718 57.7891 37.7555C60.9492 36.9687 61.34 34.2401 61.4746 31.4151C61.6319 28.047 61.6269 23.8615 61.4746 20.4908C61.3933 18.6861 61.2081 16.3053 59.9491 14.9093L58.9313 14.0869H67.815V37.8824C67.815 38.088 68.0789 39.1642 68.1602 39.4409C68.5307 40.7227 69.1983 41.5704 70.2262 42.3877H61.4695V35.1539C61.2842 35.126 61.2918 35.3773 61.2537 35.5092C59.6521 41.0323 56.9185 43.6746 50.7609 42.8801C39.0877 41.375 44.06 25.4428 42.6513 17.7394C42.3772 16.2368 41.7478 15.0159 40.5294 14.0869H49.2862Z" fill="#CEAD56"/>
-</g>
-<g filter="url(#filter3_in_2079_18)">
-<path d="M181.779 42.3878H173.023V34.6463L172.157 37.1439C168.032 46.558 152.722 44.129 154.933 33.2452C156.336 26.3337 165.167 25.887 170.512 24.2042C172.558 23.5595 173.226 22.8894 173.02 20.6253C172.403 13.7849 160.334 17.1709 158.146 21.6102L156.524 24.6205V13.5793L157.705 14.7469C158.057 14.9423 158.733 15.1099 159.128 15.1124C161.41 15.1175 164.715 13.8331 167.251 13.5793C173.467 12.9625 178.883 14.5794 179.368 21.6381C179.713 26.6637 179.043 32.0904 179.363 37.1261C179.492 39.1567 180.048 41.172 181.779 42.3878ZM173.023 32.2985C173.264 30.1486 172.842 27.5774 173.023 25.3819C172.759 25.5977 172.624 25.9124 172.325 26.1434C170.337 27.6764 165.758 27.8566 163.286 29.542C160.024 31.7655 160.23 37.3901 164.39 38.3952C168.492 39.3851 172.553 36.4814 173.025 32.2985H173.023Z" fill="#CEAD56"/>
-</g>
-<g filter="url(#filter4_in_2079_18)">
-<path d="M133.3 2.91895C131.556 4.43424 131.17 6.48003 131.018 8.69587V38.8343H143.516C145.613 38.8343 148.037 36.8038 148.933 34.9864L151.194 29.6969V42.8954L147.963 42.3827L121.497 42.3878L122.576 41.502C123.69 40.238 124.033 38.6389 124.167 37.0018C123.66 27.5546 124.825 17.4298 124.16 8.06132C124.013 5.97493 123.343 4.17789 121.624 2.91895H133.3Z" fill="#CEAD56"/>
-</g>
-<g filter="url(#filter5_in_2079_18)">
-<path d="M109.441 14.2138C112.563 14.1072 115.703 14.2062 118.579 12.8178L116.294 18.2749L114.583 17.3866H109.444V34.8366C109.444 35.0752 109.834 36.192 109.966 36.4712C111.307 39.3013 115.335 38.5932 116.987 36.4154L117.947 34.7757C117.848 38.7429 115.583 42.205 111.505 42.8624C107.555 43.4995 104.291 41.6187 103.288 37.6946C103.207 37.3723 102.971 36.3646 102.971 36.1083V17.2622H97.641L98.5243 14.4017C100.524 14.1935 102.448 14.7799 103.857 13.0082C105.834 10.5208 107.273 6.49267 109.124 3.80727L109.444 3.42908V14.2164L109.441 14.2138Z" fill="#CEAD56"/>
-</g>
-<g filter="url(#filter6_in_2079_18)">
-<path d="M82.5361 23.0975L83.3331 19.5162C84.356 15.8637 86.5084 12.7087 90.7903 13.6377C92.3209 13.9702 93.0468 14.7926 94.755 14.186C95.2753 14.0007 95.6281 13.6504 96.1155 13.455L93.4478 20.9401C89.7903 17.1683 84.6048 18.3841 83.0412 23.4123C82.1986 26.1256 82.3356 33.56 82.5311 36.6185C82.6554 38.5754 83.1809 40.3648 84.8814 41.502L86.5972 42.3878H73.7794C75.4825 41.1314 76.0714 39.177 76.1958 37.1261C76.5587 31.2121 75.914 24.9276 76.1881 18.973C75.9902 17.6227 75.7439 16.1835 74.8581 15.0997L73.7769 14.087H82.5336V23.0975H82.5361Z" fill="#CEAD56"/>
-</g>
-<defs>
-<filter id="filter0_in_2079_18" x="183.049" y="0" width="30.0239" height="46.9226" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
-<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
-<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
-<feComponentTransfer in="alphaNoise" result="coloredNoise1">
-<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-</feComponentTransfer>
-<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
-<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
-<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
-<feMerge result="effect2_noise_2079_18">
-<feMergeNode in="effect1_innerShadow_2079_18" />
-<feMergeNode in="color1" />
-</feMerge>
-</filter>
-<filter id="filter1_in_2079_18" x="0" y="2.2677" width="37.2294" height="44.7372" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
-<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
-<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
-<feComponentTransfer in="alphaNoise" result="coloredNoise1">
-<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-</feComponentTransfer>
-<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
-<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
-<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
-<feMerge result="effect2_noise_2079_18">
-<feMergeNode in="effect1_innerShadow_2079_18" />
-<feMergeNode in="color1" />
-</feMerge>
-</filter>
-<filter id="filter2_in_2079_18" x="40.5294" y="14.0869" width="29.6968" height="32.9319" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
-<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
-<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
-<feComponentTransfer in="alphaNoise" result="coloredNoise1">
-<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-</feComponentTransfer>
-<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
-<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
-<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
-<feMerge result="effect2_noise_2079_18">
-<feMergeNode in="effect1_innerShadow_2079_18" />
-<feMergeNode in="color1" />
-</feMerge>
-</filter>
-<filter id="filter3_in_2079_18" x="154.716" y="13.459" width="27.0635" height="33.5306" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
-<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
-<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
-<feComponentTransfer in="alphaNoise" result="coloredNoise1">
-<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-</feComponentTransfer>
-<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
-<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
-<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
-<feMerge result="effect2_noise_2079_18">
-<feMergeNode in="effect1_innerShadow_2079_18" />
-<feMergeNode in="color1" />
-</feMerge>
-</filter>
-<filter id="filter4_in_2079_18" x="121.497" y="2.91895" width="29.6968" height="43.9764" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
-<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
-<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
-<feComponentTransfer in="alphaNoise" result="coloredNoise1">
-<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-</feComponentTransfer>
-<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
-<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
-<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
-<feMerge result="effect2_noise_2079_18">
-<feMergeNode in="effect1_innerShadow_2079_18" />
-<feMergeNode in="color1" />
-</feMerge>
-</filter>
-<filter id="filter5_in_2079_18" x="97.641" y="3.42908" width="20.9375" height="43.5552" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
-<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
-<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
-<feComponentTransfer in="alphaNoise" result="coloredNoise1">
-<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-</feComponentTransfer>
-<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
-<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
-<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
-<feMerge result="effect2_noise_2079_18">
-<feMergeNode in="effect1_innerShadow_2079_18" />
-<feMergeNode in="color1" />
-</feMerge>
-</filter>
-<filter id="filter6_in_2079_18" x="73.7769" y="13.455" width="22.3386" height="32.9329" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2079_18"/>
-<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="905" />
-<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
-<feComponentTransfer in="alphaNoise" result="coloredNoise1">
-<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-</feComponentTransfer>
-<feComposite operator="in" in2="effect1_innerShadow_2079_18" in="coloredNoise1" result="noise1Clipped" />
-<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
-<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
-<feMerge result="effect2_noise_2079_18">
-<feMergeNode in="effect1_innerShadow_2079_18" />
-<feMergeNode in="color1" />
-</feMerge>
-</filter>
-</defs>
-</svg>                <div className='media-footer'>
+                <Logo />
+                <div className='media-footer'>
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.6676 0H1.32891C0.594141 0 0 0.580078 0 1.29727V16.6992C0 17.4164 0.594141 18 1.32891 18H16.6676C17.4023 18 18 17.4164 18 16.7027V1.29727C18 0.580078 17.4023 0 16.6676 0ZM5.34023 15.3387H2.66836V6.74648H5.34023V15.3387ZM4.0043 5.57578C3.14648 5.57578 2.45391 4.8832 2.45391 4.02891C2.45391 3.17461 3.14648 2.48203 4.0043 2.48203C4.85859 2.48203 5.55117 3.17461 5.55117 4.02891C5.55117 4.87969 4.85859 5.57578 4.0043 5.57578ZM15.3387 15.3387H12.6703V11.1621C12.6703 10.1672 12.6527 8.88398 11.2816 8.88398C9.89297 8.88398 9.68203 9.97031 9.68203 11.0918V15.3387H7.01719V6.74648H9.57656V7.9207H9.61172C9.9668 7.2457 10.8387 6.53203 12.1359 6.53203C14.8395 6.53203 15.3387 8.31094 15.3387 10.6242V15.3387Z" fill="#BFBFBF" />
                     </svg>
@@ -273,32 +264,14 @@ export default function Bottom() {
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 18L1.27129 13.3778C0.486812 12.0247 0.0746044 10.491 0.075358 8.91825C0.0776187 4.00125 4.09797 0 9.03768 0C11.4348 0.00075 13.685 0.93 15.3775 2.616C17.0693 4.302 18.0008 6.543 18 8.9265C17.9977 13.8443 13.9774 17.8455 9.03768 17.8455C7.53805 17.8448 6.06029 17.4705 4.75132 16.7595L0 18ZM4.97136 15.1448C6.23436 15.891 7.44009 16.338 9.03466 16.3387C13.1402 16.3387 16.4846 13.0133 16.4868 8.925C16.4883 4.8285 13.1598 1.5075 9.04069 1.506C4.93218 1.506 1.59005 4.8315 1.58855 8.919C1.58779 10.5878 2.07913 11.8372 2.9043 13.1445L2.15147 15.8805L4.97136 15.1448ZM13.5524 11.0468C13.4966 10.9537 13.3474 10.8982 13.1228 10.7865C12.899 10.6748 11.798 10.1355 11.5923 10.0612C11.3873 9.987 11.2381 9.9495 11.0882 10.173C10.939 10.3958 10.5094 10.8982 10.379 11.0468C10.2487 11.1953 10.1176 11.214 9.89374 11.1023C9.66993 10.9905 8.948 10.7557 8.09269 9.996C7.42728 9.405 6.97739 8.67525 6.84702 8.45175C6.71665 8.229 6.83346 8.10825 6.94499 7.99725C7.04597 7.8975 7.1688 7.737 7.28108 7.6065C7.39487 7.4775 7.4318 7.3845 7.50716 7.23525C7.58176 7.08675 7.54484 6.95625 7.48832 6.8445C7.4318 6.7335 6.98417 5.63625 6.79804 5.19C6.61567 4.75575 6.43105 4.81425 6.2939 4.8075L5.86436 4.8C5.71515 4.8 5.47249 4.8555 5.26752 5.079C5.06255 5.3025 4.4838 5.841 4.4838 6.93825C4.4838 8.0355 5.28636 9.09525 5.39789 9.24375C5.51017 9.39225 6.97664 11.6438 9.22306 12.609C9.75735 12.8385 10.1748 12.9757 10.4996 13.0785C11.0362 13.248 11.5245 13.224 11.9103 13.167C12.3406 13.1032 13.2351 12.6277 13.422 12.1073C13.6089 11.586 13.6089 11.1398 13.5524 11.0468Z" fill="#BFBFBF" />
                     </svg>
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_2079_31)">
-                            <path d="M9 1.6207C11.4047 1.6207 11.6895 1.63125 12.6352 1.67344C13.5141 1.71211 13.9887 1.85977 14.3051 1.98281C14.7234 2.14453 15.0258 2.34141 15.3387 2.6543C15.6551 2.9707 15.8484 3.26953 16.0102 3.68789C16.1332 4.0043 16.2809 4.48242 16.3195 5.35781C16.3617 6.30703 16.3723 6.5918 16.3723 8.99297C16.3723 11.3977 16.3617 11.6824 16.3195 12.6281C16.2809 13.507 16.1332 13.9816 16.0102 14.298C15.8484 14.7164 15.6516 15.0188 15.3387 15.3316C15.0223 15.648 14.7234 15.8414 14.3051 16.0031C13.9887 16.1262 13.5105 16.2738 12.6352 16.3125C11.6859 16.3547 11.4012 16.3652 9 16.3652C6.59531 16.3652 6.31055 16.3547 5.36484 16.3125C4.48594 16.2738 4.01133 16.1262 3.69492 16.0031C3.27656 15.8414 2.97422 15.6445 2.66133 15.3316C2.34492 15.0152 2.15156 14.7164 1.98984 14.298C1.8668 13.9816 1.71914 13.5035 1.68047 12.6281C1.63828 11.6789 1.62773 11.3941 1.62773 8.99297C1.62773 6.58828 1.63828 6.30352 1.68047 5.35781C1.71914 4.47891 1.8668 4.0043 1.98984 3.68789C2.15156 3.26953 2.34844 2.96719 2.66133 2.6543C2.97773 2.33789 3.27656 2.14453 3.69492 1.98281C4.01133 1.85977 4.48945 1.71211 5.36484 1.67344C6.31055 1.63125 6.59531 1.6207 9 1.6207ZM9 0C6.55664 0 6.25078 0.0105469 5.29102 0.0527344C4.33477 0.0949219 3.67734 0.249609 3.10781 0.471094C2.51367 0.703125 2.01094 1.00898 1.51172 1.51172C1.00898 2.01094 0.703125 2.51367 0.471094 3.1043C0.249609 3.67734 0.0949219 4.33125 0.0527344 5.2875C0.0105469 6.25078 0 6.55664 0 9C0 11.4434 0.0105469 11.7492 0.0527344 12.709C0.0949219 13.6652 0.249609 14.3227 0.471094 14.8922C0.703125 15.4863 1.00898 15.9891 1.51172 16.4883C2.01094 16.9875 2.51367 17.2969 3.1043 17.5254C3.67734 17.7469 4.33125 17.9016 5.2875 17.9438C6.24727 17.9859 6.55313 17.9965 8.99648 17.9965C11.4398 17.9965 11.7457 17.9859 12.7055 17.9438C13.6617 17.9016 14.3191 17.7469 14.8887 17.5254C15.4793 17.2969 15.982 16.9875 16.4813 16.4883C16.9805 15.9891 17.2898 15.4863 17.5184 14.8957C17.7398 14.3227 17.8945 13.6688 17.9367 12.7125C17.9789 11.7527 17.9895 11.4469 17.9895 9.00352C17.9895 6.56016 17.9789 6.2543 17.9367 5.29453C17.8945 4.33828 17.7398 3.68086 17.5184 3.11133C17.2969 2.51367 16.991 2.01094 16.4883 1.51172C15.9891 1.0125 15.4863 0.703125 14.8957 0.474609C14.3227 0.253125 13.6688 0.0984375 12.7125 0.05625C11.7492 0.0105469 11.4434 0 9 0Z" fill="#BFBFBF" />
-                            <path d="M9 4.37695C6.44766 4.37695 4.37695 6.44766 4.37695 9C4.37695 11.5523 6.44766 13.623 9 13.623C11.5523 13.623 13.623 11.5523 13.623 9C13.623 6.44766 11.5523 4.37695 9 4.37695ZM9 11.9988C7.34414 11.9988 6.00117 10.6559 6.00117 9C6.00117 7.34414 7.34414 6.00117 9 6.00117C10.6559 6.00117 11.9988 7.34414 11.9988 9C11.9988 10.6559 10.6559 11.9988 9 11.9988Z" fill="#BFBFBF" />
-                            <path d="M14.8852 4.19417C14.8852 4.79182 14.4 5.27346 13.8059 5.27346C13.2082 5.27346 12.7266 4.78831 12.7266 4.19417C12.7266 3.59651 13.2117 3.11487 13.8059 3.11487C14.4 3.11487 14.8852 3.60003 14.8852 4.19417Z" fill="#BFBFBF" />
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_2079_31">
-                                <rect width="18" height="18" fill="white" />
-                            </clipPath>
-                        </defs>
-                    </svg>
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_2079_38)">
-                            <path d="M13.7447 1.42798H16.2748L10.7473 7.7456L17.25 16.3425H12.1584L8.17053 11.1285L3.60746 16.3425H1.07582L6.98808 9.58505L0.75 1.42798H5.97083L9.57555 6.19373L13.7447 1.42798ZM12.8567 14.8281H14.2587L5.20905 2.86283H3.7046L12.8567 14.8281Z" fill="#BFBFBF" />
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_2079_38">
-                                <rect width="18" height="18" fill="white" />
-                            </clipPath>
-                        </defs>
-                    </svg>
+                    <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.9947 0H15.5248L9.99729 6.31762L16.5 14.9145H11.4084L7.42053 9.70053L2.85746 14.9145H0.325824L6.23808 8.15707L0 0H5.22083L8.82555 4.76575L12.9947 0ZM12.1067 13.4001H13.5087L4.45905 1.43485H2.9546L12.1067 13.4001Z" fill="#BFBFBF"/>
+</svg>
+
 
                 </div>
                 <h6>All rights reserved to CurtLab</h6>
             </footer>
-        </div>
+        </div >
     );
 };
