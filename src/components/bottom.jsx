@@ -6,8 +6,7 @@ export default function Bottom() {
         <section className="contact-section" id="contact" aria-label="Contact us">
             <div className="contact-container">
                 <div className="contact-form-wrapper">
-                    <h3>Start Your Project</h3>
-                    <p className="form-description">Get a free quote for your custom window treatments</p>
+                    <h3>Get in touch with us</h3>
 
                     <form className="contact-form" >
                         <div className="form-group">
@@ -56,61 +55,21 @@ export default function Bottom() {
                             </svg>
                         </button>
                     </form>
+
+                    <div class="link">
+                            <a href="#"><span class="material-symbols-outlined">
+                                    call
+                                </span>+97 123 456 7891</a>
+                            <a href="#"><span class="material-symbols-outlined">
+                                    location_on
+                                </span>15 Square , Dubai</a>
+                            <a href="#"><span class="material-symbols-outlined">
+                                    mail
+                                </span>info@example.com</a>
+                        </div>
                 </div>
 
                 <div className="contact-info">
-                    {/* <div className="contact-header">
-                        <h3>Contact Information</h3>
-                        <p>Get in touch with our experts</p>
-                    </div>
-
-                    <div className="contact-item">
-                        <div className="contact-icon">
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                <circle cx="16" cy="16" r="15" stroke="white" strokeWidth="2" />
-                                <path d="M11 13L16 16.5L21 13" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                            </svg>
-                        </div>
-                        <div className="contact-details">
-                            <h4>Phone Number</h4>
-                            <a href="tel:+971234567891">+97 123 456 7891</a>
-                        </div>
-                    </div>
-
-                    <div className="contact-item">
-                        <div className="contact-icon">
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                <circle cx="16" cy="16" r="15" stroke="white" strokeWidth="2" />
-                                <rect x="9" y="11" width="14" height="10" stroke="white" strokeWidth="1.5" rx="1" />
-                                <path d="M9 11L16 15L23 11" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-                            </svg>
-                        </div>
-                        <div className="contact-details">
-                            <h4>Email Address</h4>
-                            <a href="mailto:info@curtlab.com">info@curtlab.com</a>
-                        </div>
-                    </div>
-
-                    <div className="contact-item">
-                        <div className="contact-icon">
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                <circle cx="16" cy="16" r="15" stroke="white" strokeWidth="2" />
-                                <path d="M16 9V15.5L19 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-                            </svg>
-                        </div>
-                        <div className="contact-details">
-                            <h4>Office Location</h4>
-                            <p>123 Main Street, City, State 12345</p>
-                            <a
-                                href="https://maps.google.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="map-link"
-                            >
-                                View on Map
-                            </a>
-                        </div>
-                    </div> */}
                     <img src="/images/contact.jpg" alt="" />
                 </div>
             </div>
