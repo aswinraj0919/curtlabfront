@@ -1,4 +1,4 @@
-import { useEffect, useRef ,useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Bottom from '../components/bottom';
@@ -7,22 +7,121 @@ import './style.css';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const location = useLocation();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [hoveredProductId, setHoveredProductId] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-    const location = useLocation();
+  const ref = useRef(null);
+  const [height, setHeight] = useState('auto');
+
+  useEffect(() => {
+    if (ref.current) {
+      const contentHeight = ref.current.scrollHeight;
+      setHeight(`${contentHeight + 100}px`);
+    }
+  }, []);
 
   const products = [
-    { id: 3, name: 'Sheer & Blackout Curtains', content: 'The perfect duo for style and functionality — sheer and blackout curtains layered together allow you to adjust the light and privacy according to your mood and time of day. The sheer layer offers brightness and elegance during the day, while the blackout layer ensures complete darkness and privacy at night. This combination adds depth, luxury, and versatility to any room setting.', image: '/images/product-3.jpg' },
-    { id: 4, name: 'Eyelet Curtains – Blackout', content: 'Eyelet blackout curtains are a modern and stylish choice featuring polished metal rings at the top for easy sliding and a neat, uniform drape. The blackout fabric blocks sunlight and offers privacy, making them ideal for bedrooms and offices. They are low-maintenance, elegant, and available in a wide range of colors and textures to match both contemporary and classic interiors.', image: '/images/product-4.jpg' },
-    { id: 6, name: 'Wave Style Curtains – Blackout', content: 'Wave style blackout curtains feature a continuous, soft wave pattern that creates a clean and uniform look from ceiling to floor. The sleek design complements modern interiors, while the blackout material ensures total light control, thermal insulation, and noise reduction. These curtains are ideal for luxury residences, hotels, and offices where both aesthetics and performance matter.', image: '/images/product-6.jpg' },
-    { id: 7, name: 'Wave Style Curtains – Sheer', content: 'Wave sheer curtains bring a sense of movement and harmony to any room with their perfectly aligned, ripple-like folds. They diffuse natural light beautifully and maintain a smooth, minimalist appearance. Ideal for large windows, glass partitions, and contemporary interiors, these curtains combine elegance and functionality to elevate any space with refined simplicity', image: '/images/product-7.jpg' },
-    { id: 8, name: 'Blackout Roller Blinds', content: 'Blackout Roller Blinds offer a sleek, modern solution for complete light control and privacy. Designed with high-quality blackout fabrics, they effectively block sunlight and UV rays, keeping interiors cool and comfortable. Their simple rolling mechanism makes them easy to operate, while the clean lines complement both residential and commercial spaces. Ideal for bedrooms, offices, and media rooms where darkness and energy efficiency are priorities.', image: '/images/product-8.jpg' },
-    { id: 10, name: 'Zebra Blinds', content: 'Zebra Blinds, also known as day-and-night blinds, combine alternating horizontal sheer and solid fabric stripes that can be adjusted to control light and privacy with precision. When aligned, they let soft light in; when overlapped, they offer complete privacy. These blinds are highly functional, stylish, and perfect for modern interiors where you want both brightness and seclusion at your fingertips.', image: '/images/product-10.jpg' },
-    { id: 11, name: 'Wooden Blinds', content: 'Crafted from premium natural or faux wood, Wooden Blinds bring warmth, character, and timeless elegance to any space. Their adjustable slats allow precise control over light and privacy, while the rich wood tones create a cozy, refined atmosphere. Ideal for living rooms, offices, and classic interiors, they combine durability with natural beauty, adding an earthy, organic touch to contemporary décor.', image: '/images/product-11.jpg' },
-    { id: 14, name: 'Vertical Blinds', content: 'Vertical Blinds are a versatile and elegant choice for large windows and sliding doors. Featuring vertical fabric or PVC slats that rotate to control light and privacy, they provide excellent flexibility and a clean, structured look. Perfect for offices, living rooms, and patio doors, vertical blinds add height and openness to interiors while offering smooth functionality and easy maintenance.', image: '/images/product-12.jpg' },
-
-
+    { id: 3, name: 'Sheer & Blackout Curtains', content: 'The perfect duo for style and functionality — sheer and blackout curtains layered together allow you to adjust the light and privacy according to your mood and time of day. The sheer layer offers brightness and elegance during the day, while the blackout layer ensures complete darkness and privacy at night. This combination adds depth, luxury, and versatility to any room setting.', images: ['/images/product-3.jpg'] },
+    { id: 4, name: 'Eyelet Curtains – Blackout', content: 'Eyelet blackout curtains are a modern and stylish choice featuring polished metal rings at the top for easy sliding and a neat, uniform drape. The blackout fabric blocks sunlight and offers privacy, making them ideal for bedrooms and offices. They are low-maintenance, elegant, and available in a wide range of colors and textures to match both contemporary and classic interiors.', images: ['/images/product-4.jpg'] },
+    { id: 6, name: 'Wave Style Curtains – Blackout', content: 'Wave style blackout curtains feature a continuous, soft wave pattern that creates a clean and uniform look from ceiling to floor. The sleek design complements modern interiors, while the blackout material ensures total light control, thermal insulation, and noise reduction. These curtains are ideal for luxury residences, hotels, and offices where both aesthetics and performance matter.', images: ['/images/product-6.jpg'] },
+    { id: 7, name: 'Wave Style Curtains – Sheer', content: 'Wave sheer curtains bring a sense of movement and harmony to any room with their perfectly aligned, ripple-like folds. They diffuse natural light beautifully and maintain a smooth, minimalist appearance. Ideal for large windows, glass partitions, and contemporary interiors, these curtains combine elegance and functionality to elevate any space with refined simplicity', images: ['/images/product-7.jpg'] },
+    { id: 8, name: 'Blackout Roller Blinds', content: 'Blackout Roller Blinds offer a sleek, modern solution for complete light control and privacy. Designed with high-quality blackout fabrics, they effectively block sunlight and UV rays, keeping interiors cool and comfortable. Their simple rolling mechanism makes them easy to operate, while the clean lines complement both residential and commercial spaces. Ideal for bedrooms, offices, and media rooms where darkness and energy efficiency are priorities.', images: ['/images/product-8.jpg'] },
+    { id: 10, name: 'Zebra Blinds', content: 'Zebra Blinds, also known as day-and-night blinds, combine alternating horizontal sheer and solid fabric stripes that can be adjusted to control light and privacy with precision. When aligned, they let soft light in; when overlapped, they offer complete privacy. These blinds are highly functional, stylish, and perfect for modern interiors where you want both brightness and seclusion at your fingertips.', images: ['/images/product-10.jpg'] },
+    { id: 11, name: 'Wooden Blinds', content: 'Crafted from premium natural or faux wood, Wooden Blinds bring warmth, character, and timeless elegance to any space. Their adjustable slats allow precise control over light and privacy, while the rich wood tones create a cozy, refined atmosphere. Ideal for living rooms, offices, and classic interiors, they combine durability with natural beauty, adding an earthy, organic touch to contemporary décor.', images: ['/images/product-11.jpg'] },
+    { id: 14, name: 'Vertical Blinds', content: 'Vertical Blinds are a versatile and elegant choice for large windows and sliding doors. Featuring vertical fabric or PVC slats that rotate to control light and privacy, they provide excellent flexibility and a clean, structured look. Perfect for offices, living rooms, and patio doors, vertical blinds add height and openness to interiors while offering smooth functionality and easy maintenance.', images: ['/images/product-14.jpg', '/images/product-14-2.jpg'] },
   ];
   const scrollRef = useRef(null);
+
+  const handleKnowMoreClick = (product) => {
+    setSelectedProduct(product);
+    setCurrentImageIndex(0);
+    setShowPopup(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    setSelectedProduct(null);
+    setCurrentImageIndex(0);
+    document.body.style.overflow = 'auto';
+  };
+
+  const handleNextImage = (e, productId = null) => {
+    e.stopPropagation();
+    if (productId) {
+      // For product grid
+      const product = products.find(p => p.id === productId);
+      if (product) {
+        const currentIndex = hoveredProductId === productId ? currentImageIndex : 0;
+        const nextIndex = (currentIndex + 1) % product.images.length;
+        setCurrentImageIndex(nextIndex);
+        setHoveredProductId(productId);
+      }
+    } else {
+      // For popup
+      if (selectedProduct) {
+        setCurrentImageIndex((prevIndex) =>
+          (prevIndex + 1) % selectedProduct.images.length
+        );
+      }
+    }
+  };
+
+  const handlePrevImage = (e, productId = null) => {
+    e.stopPropagation();
+    if (productId) {
+      // For product grid
+      const product = products.find(p => p.id === productId);
+      if (product) {
+        const currentIndex = hoveredProductId === productId ? currentImageIndex : 0;
+        const prevIndex = currentIndex === 0 ? product.images.length - 1 : currentIndex - 1;
+        setCurrentImageIndex(prevIndex);
+        setHoveredProductId(productId);
+      }
+    } else {
+      // For popup
+      if (selectedProduct) {
+        setCurrentImageIndex((prevIndex) =>
+          prevIndex === 0 ? selectedProduct.images.length - 1 : prevIndex - 1
+        );
+      }
+    }
+  };
+  const handleProductImageClick = (e, product) => {
+    e.stopPropagation();
+    if (product.images.length > 1) {
+      // If multiple images, cycle to next image
+      const currentIndex = hoveredProductId === product.id ? currentImageIndex : 0;
+      const nextIndex = (currentIndex + 1) % product.images.length;
+      setCurrentImageIndex(nextIndex);
+      setHoveredProductId(product.id);
+    } else {
+      // If single image, open popup
+      handleKnowMoreClick(product);
+    }
+  };
+
+  const getCurrentImageForProduct = (productId) => {
+    if (hoveredProductId === productId) {
+      const product = products.find(p => p.id === productId);
+      return product ? product.images[currentImageIndex] : product.images[0];
+    }
+    return null;
+  };
+
+    const handlePopupOutsideClick = (e) => {
+    if (e.target.classList.contains('popup-overlay')) {
+      handleClosePopup();
+    }
+  };
+   const handleBookNow = () => {
+    const contactSection = document.getElementById('contact');
+    contactSection?.scrollIntoView({ behavior: 'smooth' });
+    handleClosePopup();
+  };
 
   useEffect(() => {
     const slider = scrollRef.current;
@@ -38,12 +137,6 @@ export default function Home() {
       slider.removeEventListener("wheel", onWheel);
     };
   }, []);
-
-      const handleBookNow = () => {
-    // Scroll to contact section or open booking modal
-    const contactSection = document.getElementById('contact');
-    contactSection?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <div className="home-page">
@@ -88,41 +181,87 @@ export default function Home() {
           <h1>Our Products</h1>
         </div>
         <div className='collections-grid' ref={scrollRef}>
-          {products.map((product) => (
-
-            <div className='collection-items home'>
-              <img src={product.image} />
-              <div className="collection-content home">
-                <h1>{product.name}</h1>
-                <p>{product.content}</p>
-                <div className='collection-btn'>
-                  <button className='btn btn-secondary' onClick={handleBookNow}>Book Now<svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
-                    <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
-                    <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
-                  </svg>
-                  </button>
-
-                  <button className='btn btn-primary'>Know More<svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="0.283911" y1="4.54263" x2="17.8864" y2="4.54263" stroke="white" stroke-width="0.567822" stroke-linecap="round" />
-                    <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="white" stroke-width="0.567822" stroke-linecap="round" />
-                    <line x1="18.1704" y1="4.66018" x2="14.0293" y2="8.80124" stroke="white" stroke-width="0.567822" stroke-linecap="round" />
-                  </svg>
-                  </button>
-
+          {products.map((product) => {
+              const currentImage = getCurrentImageForProduct(product.id) || product.images[0];
+              
+              return (
+                <div key={product.id} className='collection-items'>
+                  <div 
+                    className="product-image-container"
+                    onClick={(e) => handleProductImageClick(e, product)}
+                  >
+                    <img src={currentImage} alt={product.name} />
+                    
+                    {/* Navigation arrows on product image */}
+                    {product.images.length > 1 && (
+                      <>
+                        <button 
+                          className="product-nav-btn prev-btn" 
+                          onClick={(e) => handlePrevImage(e, product.id)}
+                          aria-label="Previous image"
+                        >
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </button>
+                        <button 
+                          className="product-nav-btn next-btn" 
+                          onClick={(e) => handleNextImage(e, product.id)}
+                          aria-label="Next image"
+                        >
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </button>
+                      </>
+                    )}
+                    
+                    {/* Image counter for multiple images */}
+                    {product.images.length > 1 && (
+                      <div className="image-counter">
+                        {hoveredProductId === product.id 
+                          ? `${currentImageIndex + 1} / ${product.images.length}`
+                          : `1 / ${product.images.length}`}
+                      </div>
+                    )}
+                  </div>
+                  <div className="collection-content">
+                    <h1>{product.name}</h1>
+                    <p>{product.content.substring(0, 150)}...</p>
+                    <div className='collection-btn'>
+                      <button className='btn btn-secondary' onClick={handleBookNow}>
+                        Book Now
+                        <svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                          <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                          <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                        </svg>
+                      </button>
+                      <button
+                        className='btn btn-primary'
+                        onClick={() => handleKnowMoreClick(product)}
+                      >
+                        Know More
+                        <svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <line x1="0.283911" y1="4.54263" x2="17.8864" y2="4.54263" stroke="white" stroke-width="0.567822" stroke-linecap="round" />
+                          <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="white" stroke-width="0.567822" stroke-linecap="round" />
+                          <line x1="18.1704" y1="4.66018" x2="14.0293" y2="8.80124" stroke="white" stroke-width="0.567822" stroke-linecap="round" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              );
+            })}
         </div>
       </section>
 
       <div className="view-more">
         <Link
-            to="/products"
-          >
-        <button className="btn btn-secondary view-more">View More</button>
-          </Link>
+          to="/products"
+        >
+          <button className="btn btn-secondary view-more">View More</button>
+        </Link>
       </div>
 
       {/* Why Us Section */}
@@ -211,7 +350,7 @@ export default function Home() {
               <h1>“Proudly Tailored in UAE”</h1>
             </div>
             <div className='promo-step-2'>
-              <h2>Book you’r slot now</h2>
+              <h2>Book your slot now</h2>
               <button className='btn btn-secondary' onClick={handleBookNow}>Book Now <svg width="15" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
                 <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
@@ -223,7 +362,90 @@ export default function Home() {
 
         </div>
       </section>
+      {showPopup && selectedProduct && (
+        <div
+          className="popup-overlay"
+          onClick={handlePopupOutsideClick}
+          aria-hidden={!showPopup}
+        >
+          <div className="products-grid product-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+            <div className="popup-content">
+              <div className="popup-image-container">
+                <img
+                  src={selectedProduct.images[currentImageIndex]}
+                  alt={`${selectedProduct.name} - Image ${currentImageIndex + 1}`}
+                  className="popup-image"
+                />
 
+                {/* Navigation arrows for multiple images */}
+                {selectedProduct.images.length > 1 && (
+                  <>
+                    <button
+                      className="popup-nav-btn prev-btn"
+                      onClick={handlePrevImage}
+                      aria-label="Previous image"
+                    >
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </button>
+                    <button
+                      className="popup-nav-btn next-btn"
+                      onClick={handleNextImage}
+                      aria-label="Next image"
+                    >
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </button>
+                  </>
+                )}
+
+                {/* Image indicators/dots */}
+                {selectedProduct.images.length > 1 && (
+                  <div className="popup-image-indicators">
+                    {selectedProduct.images.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`popup-image-indicator ${index === currentImageIndex ? 'active' : ''}`}
+                        onClick={() => setCurrentImageIndex(index)}
+                        aria-label={`View image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="popup-details">
+                <h1 id="popup-title" className="popup-product-name">{selectedProduct.name}</h1>
+                <div className="popup-description">
+
+                  {selectedProduct.content.split(' >').map((sentence, index) => (
+                    <p key={index} className="popup-sentence">
+                      {sentence.trim()}
+                      {index < selectedProduct.content.split('').length - 1 ? '' : ''}
+                    </p>
+                  ))}
+                  <h3>Book Your Free Consultation Here</h3>
+                </div>
+                {/* <div className="popup-actions"> */}
+                <button
+                  className="btn btn-popup-book"
+                  onClick={handleBookNow}
+                >
+                  Book Now
+                  <svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                    <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                    <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                  </svg>
+                </button>
+                {/* </div> */}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Bottom />
 
