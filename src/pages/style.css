@@ -625,6 +625,7 @@ body.popup-open {
 
 .collections-section {
   background-image: url('../../public/images/MacBook Air - 1.png');
+  padding: 10px;
 }
 
 .why-us-section {
@@ -742,8 +743,7 @@ body.popup-open {
   text-transform: uppercase;
   font-size: 20px;
   font-weight: 400;
-  margin-bottom: 15px;
-  height: 80px;
+  height: 62px;
 }
 
 .collection-content h1::after {
@@ -1613,7 +1613,7 @@ height: 100%;
     border-radius: 0 25px 0 0;
   }
 
-  .step-image-wrapper.step-3{
+  .step-image-wrapper.step-4{
     border-radius: 0;
   }
 
@@ -1633,7 +1633,11 @@ height: 100%;
   }
 
   .step-image-wrapper.step-1{
-    border-radius: 25px 25px 0;
+    border-radius: 25px 25px 0 0;
+  }
+    .step-image-wrapper.step-2{
+    border-radius: 0;
+  
   }
   .step-image-wrapper.step-4{
     border-radius: 0;
@@ -1800,6 +1804,9 @@ height: 100%;
 
   .step-content h3 {
     font-size: 24px;
+  }
+  .about-grid h3{
+    font-size: 20px;
   }
 
   .collections-grid,
