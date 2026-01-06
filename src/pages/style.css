@@ -298,26 +298,26 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-   gap: 5px;
+  gap: 5px;
 }
 
-.view-more{
+.view-more {
   margin: 50px auto 0;
   max-width: 1200px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
- 
-.view-more.btn
-{
+
+.view-more.btn {
   font-family: 'Inter';
-font-weight: 600;
-font-size: 12px;
-line-height: 100%;
-text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  text-transform: uppercase;
 
 }
+
 .btn::before {
   content: '';
   position: absolute;
@@ -360,7 +360,7 @@ text-transform: uppercase;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.collection-content.home{
+.collection-content.home {
   width: 450px;
 }
 
@@ -476,7 +476,7 @@ text-transform: uppercase;
 }
 
 .popup-content {
-display: flex;
+  display: flex;
   gap: 30px;
   align-items: center;
 }
@@ -498,7 +498,7 @@ display: flex;
   transform: scale(1.05);
 }
 
-.popup-details{
+.popup-details {
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -553,16 +553,22 @@ display: flex;
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(50px);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: translateY(0);
   }
@@ -571,21 +577,22 @@ display: flex;
 /* Responsive Design */
 @media (max-width: 768px) {
   .popup-content {
-flex-direction: column;
+    flex-direction: column;
     gap: 20px;
   }
-  .popup-image{
-  height: auto;
+
+  .popup-image {
+    height: auto;
   }
-  
+
   .product-popup {
     width: 95%;
   }
-  
+
   .popup-actions {
     flex-direction: column;
   }
-  
+
   .popup-btn {
     width: 100%;
   }
@@ -615,11 +622,12 @@ body.popup-open {
   height: fit-content;
 
 }
-.collections-section{
+
+.collections-section {
   background-image: url('../../public/images/MacBook Air - 1.png');
 }
 
-.why-us-section{
+.why-us-section {
   background-image: url('../../public/images/MacBook Air - 2.png');
   background-size: fit-content;
 }
@@ -731,26 +739,25 @@ body.popup-open {
 
 .collection-content h1 {
   font-family: 'Faculty Glyphic';
-text-transform: uppercase;
+  text-transform: uppercase;
   font-size: 20px;
   font-weight: 400;
   margin-bottom: 15px;
 }
 
-.collection-content h1::after{
-    content: '';
-    display: flex;
-    width: 100%;
-    height: 3px;
-    background-color: #253F4B;
+.collection-content h1::after {
+  content: '';
+  display: flex;
+  width: 100%;
+  height: 3px;
+  background-color: #253F4B;
 }
 
 .collection-content p {
-font-family: 'Neue Haas Grotesk Display Pro';
-font-weight: 400;
-font-size: 10.51px;
-line-height: 104%;
-
+  font-family: 'Neue Haas Grotesk Display Pro';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 104%;
   margin-bottom: 20px;
   overflow: hidden;
   height: 75px;
@@ -842,7 +849,7 @@ line-height: 104%;
   text-align: center;
 }
 
-.points{
+.points {
   padding: 20px;
 }
 
@@ -1000,13 +1007,13 @@ line-height: 104%;
 }
 
 .contact-form-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    padding: 25px;
-    width: 100%;
-    margin: auto;
-    max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 25px;
+  width: 100%;
+  margin: auto;
+  max-width: 450px;
 }
 
 .contact-form-wrapper h3 {
@@ -1345,10 +1352,10 @@ line-height: 104%;
   gap: 30px;
 }
 
-.about-grid h3{
-    font-family: 'Faculty Glyphic';
+.about-grid h3 {
+  font-family: 'Faculty Glyphic';
   font-weight: 400;
-  font-size: 32px; 
+  font-size: 32px;
   line-height: 104%;
   text-align: justify;
 }
@@ -1513,8 +1520,8 @@ line-height: 104%;
   font-size: 36px;
   line-height: 104%;
   text-transform: uppercase;
-      letter-spacing: 3px;
-      padding: 50px 0px;
+  letter-spacing: 3px;
+  padding: 50px 0px;
 
 }
 
@@ -1536,13 +1543,13 @@ line-height: 104%;
   height: auto;
 }
 
-.contact-form-wrapper button{
+.contact-form-wrapper button {
   font-family: Inter;
-font-weight: 600;
-font-size: 10px;
-line-height: 100%;
-text-align: center;
-text-transform: uppercase;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 100%;
+  text-align: center;
+  text-transform: uppercase;
 
 }
 
@@ -1818,7 +1825,9 @@ text-transform: uppercase;
   .products-title span:first-child,
   .about-title span:first-child {
     font-size: 42px;
-  }.footer{
+  }
+
+  .footer {
     flex-direction: column;
     gap: 30px;
   }
@@ -1960,7 +1969,8 @@ text-transform: uppercase;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(37, 63, 75, 0.8); /* Using your primary color with opacity */
+  background: rgba(37, 63, 75, 0.8);
+  /* Using your primary color with opacity */
   border: none;
   width: 35px;
   height: 35px;
@@ -2081,30 +2091,31 @@ text-transform: uppercase;
 }
 
 .popup-product-name {
-font-family: 'Faculty Glyphic';
-font-weight: 400;
-font-size: 24px;
-line-height: 100%;
-text-transform: uppercase;
-width: 100%;
+  font-family: 'Faculty Glyphic';
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 100%;
+  text-transform: uppercase;
+  width: 100%;
 }
 
-.popup-product-name::after{
+.popup-product-name::after {
   content: '';
   display: flex;
   width: 100%;
   height: 3px;
   background-color: #253F4B;
 }
+
 .popup-description {
   margin-bottom: 40px;
 }
 
 .popup-sentence {
-font-family: 'Neue Haas Grotesk Display Pro';
-font-weight: 400;
-font-size: 16px;
-color: #253F4B;
+  font-family: 'Neue Haas Grotesk Display Pro';
+  font-weight: 400;
+  font-size: 16px;
+  color: #253F4B;
 
 }
 
@@ -2156,10 +2167,18 @@ color: #253F4B;
   gap: 10px;
   width: 100%;
 }
-.popup-description h3{
+.bar {
+    content: '';
+    display: flex;
+    height: 10px;
+    width: 100%;
+    background-color: black;
+}
+
+.popup-description h3 {
   font-family: 'Faculty Glyphic';
-font-weight: 400;
-font-size: 16.5px;
+  font-weight: 400;
+  font-size: 20px;
 
 }
 
@@ -2237,11 +2256,11 @@ font-size: 16.5px;
   .popup-content {
     padding: 30px;
   }
-  
+
   .popup-product-name {
     font-size: 36px;
   }
-  
+
   .popup-sentence {
     font-size: 16px;
   }
@@ -2253,29 +2272,29 @@ font-size: 16.5px;
     gap: 30px;
     padding: 20px;
   }
-  
+
   .popup-image-container {
     min-height: 300px;
   }
-  
+
   .popup-details {
     padding: 0;
   }
-  
+
   .popup-product-name {
     font-size: 32px;
     text-align: center;
   }
-  
+
   .popup-sentence {
     font-size: 15px;
     text-align: center;
   }
-  
+
   .popup-actions {
     align-items: center;
   }
-  
+
   .btn-popup-consultation,
   .btn-popup-book {
     width: 100%;
@@ -2289,30 +2308,30 @@ font-size: 16.5px;
     width: 95%;
     border-radius: 15px;
   }
-  
+
   .popup-content {
     padding: 15px;
     gap: 20px;
   }
-  
+
   .popup-image-container {
     min-height: 250px;
   }
-  
+
   .popup-product-name {
     font-size: 24px;
   }
-  
+
   .popup-sentence {
     font-size: 14px;
     line-height: 1.6;
   }
-  
+
   .popup-nav-btn {
     width: 35px;
     height: 35px;
   }
-  
+
   .popup-nav-btn svg {
     width: 20px;
     height: 20px;

@@ -143,7 +143,8 @@ export default function Bottom() {
     };
 
     return (
-        <div>
+        <div> 
+            <div className='bar'></div>
             <section className="contact-section" id="contact" aria-label="Contact us">
                 <div className="contact-container">
                     <div className="contact-form-wrapper">
