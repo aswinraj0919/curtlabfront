@@ -2170,9 +2170,10 @@ body.popup-open {
 .bar {
     content: '';
     display: flex;
-    height: 10px;
+    height: 6px;
     width: 100%;
-    background-color: black;
+    background-color: #839CB6;
+;
 }
 
 .popup-description h3 {

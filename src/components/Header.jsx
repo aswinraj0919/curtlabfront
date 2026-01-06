@@ -53,7 +53,7 @@ export default function Header() {
           <a href="#gallery" className="nav-link" onClick={closeMenu}>
             Gallery / Inspirations
           </a>
-          <a href="#contact" className="nav-link" onClick={closeMenu}>
+          <a href="/contact" className="nav-link" onClick={closeMenu}>
             Contact Us
           </a>
         </nav>
