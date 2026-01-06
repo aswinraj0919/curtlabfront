@@ -12,7 +12,7 @@ export default function Products() {
   const [hoveredProductId, setHoveredProductId] = useState(null);
   const ref = useRef(null);
   const [height, setHeight] = useState('auto');
-  
+
   const products = [
     { id: 8, name: 'Blackout Roller Blinds', content: 'Blackout Roller Blinds offer a sleek, modern solution for complete light control and privacy. Designed with high-quality blackout fabrics, they effectively block sunlight and UV rays, keeping interiors cool and comfortable. Their simple rolling mechanism makes them easy to operate, while the clean lines complement both residential and commercial spaces. Ideal for bedrooms, offices, and media rooms where darkness and energy efficiency are priorities.', images: ['/images/product-8.jpg'] },
     { id: 9, name: 'Panel Blinds', content: 'Panel Blinds feature wide fabric panels that slide smoothly across a track, creating a contemporary look suitable for large windows, sliding doors, and partitions. They are perfect for open-plan spaces, offering flexible light and privacy control. Available in various textures, patterns, and opacities, panel blinds add a sophisticated architectural element while enhancing the overall flow and balance of the interior design.', images: ['/images/product-9.jpg'] },
@@ -142,7 +142,7 @@ export default function Products() {
 
       {/* Products Grid Section */}
       <section className="products-grid-section" aria-label="Product collections">
-        <div className='about-content products'ref={ref} style={{ height }}>
+        <div className='about-content products'>
           <h1>Shop by Categories</h1>
           <div className='products-grid category'>
             <div className='category-item'>

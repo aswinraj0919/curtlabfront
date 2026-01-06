@@ -142,7 +142,7 @@ export default function Products() {
 
       {/* Products Grid Section */}
       <section className="products-grid-section" aria-label="Product collections">
-        <div className='about-content products'ref={ref} style={{ height }}>
+        <div className='about-content products'>
           <h1>Shop by Categories</h1>
           <div className='products-grid category'>
             <div className='category-item'>

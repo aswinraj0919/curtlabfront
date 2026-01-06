@@ -30,7 +30,7 @@ export default function Home() {
     { id: 10, name: 'Zebra Blinds', content: 'Zebra Blinds, also known as day-and-night blinds, combine alternating horizontal sheer and solid fabric stripes that can be adjusted to control light and privacy with precision. When aligned, they let soft light in; when overlapped, they offer complete privacy. These blinds are highly functional, stylish, and perfect for modern interiors where you want both brightness and seclusion at your fingertips.', images: ['/images/product-10.jpg'] },
     { id: 11, name: 'Wooden Blinds', content: 'Crafted from premium natural or faux wood, Wooden Blinds bring warmth, character, and timeless elegance to any space. Their adjustable slats allow precise control over light and privacy, while the rich wood tones create a cozy, refined atmosphere. Ideal for living rooms, offices, and classic interiors, they combine durability with natural beauty, adding an earthy, organic touch to contemporary décor.', images: ['/images/product-11.jpg'] },
   ];
-  
+
   const scrollRef = useRef(null);
 
   const handleKnowMoreClick = (product) => {
@@ -289,7 +289,7 @@ export default function Home() {
 
             {/* Step 2 */}
             <div className="why-us-step">
-              <div className="step-image-wrapper">
+              <div className="step-image-wrapper step-2">
                 <div className="step-number-overlay">02
                   <div className="step-content">
                     <h3>Get Measured</h3>
@@ -349,10 +349,10 @@ export default function Home() {
             </div>
             <div className='promo-step-2'>
               <h2>Book your slot now</h2>
-              <button className='btn btn-secondary' onClick={handleBookNow}>Book Now <svg width="15" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
-                <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
-                <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+              <button className='btn btn-secondary promo' onClick={handleBookNow}>Book Now <svg width="15" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253f4b" stroke-width="0.567822" stroke-linecap="round" />
+                <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253f4b" stroke-width="0.567822" stroke-linecap="round" />
+                <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253f4b" stroke-width="0.567822" stroke-linecap="round" />
               </svg>
               </button>
             </div>

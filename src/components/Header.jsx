@@ -50,12 +50,18 @@ export default function Header() {
           >
             Products
           </Link>
-          <a href="#gallery" className="nav-link" onClick={closeMenu}>
+          <Link
+            className={`nav-link ${location.pathname === '/products' ? 'active' : ''}`}
+          >
             Gallery / Inspirations
-          </a>
-          <a href="/contact" className="nav-link" onClick={closeMenu}>
+          </Link>
+          <Link
+            to="/contact"
+            className={`nav-link ${location.pathname === '/products' ? 'active' : ''}`}
+            onClick={closeMenu}
+          >
             Contact Us
-          </a>
+          </Link>
         </nav>
 
         <a className="phone-icon" href="tel:+1234567890">

@@ -743,6 +743,7 @@ body.popup-open {
   font-size: 20px;
   font-weight: 400;
   margin-bottom: 15px;
+  height: 80px;
 }
 
 .collection-content h1::after {
@@ -762,10 +763,15 @@ body.popup-open {
   overflow: hidden;
   height: 75px;
 }
+p{
+      text-align: justify;
+
+}
 
 .collection-btn {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 20px;
 }
 
@@ -1591,6 +1597,17 @@ body.popup-open {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
   }
+  .step-image-wrapper.step-1{
+    border-radius: 25px 0 0 0;
+  }
+
+  .step-image-wrapper.step-2{
+    border-radius: 0 25px 0 0;
+  }
+
+  .step-image-wrapper.step-3{
+    border-radius: 0;
+  }
 
   .products-hero-content,
   .about-hero-content {
@@ -1605,6 +1622,13 @@ body.popup-open {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+  }
+
+  .step-image-wrapper.step-1{
+    border-radius: 25px 25px 0;
+  }
+  .step-image-wrapper.step-4{
+    border-radius: 0;
   }
 
   .promo-step-1,
@@ -1986,6 +2010,10 @@ body.popup-open {
   visibility: hidden;
 }
 
+.promo-step-2 btn {
+    background-color: white;
+}
+
 .product-image-container:hover .product-nav-btn {
   opacity: 1;
   visibility: visible;
@@ -2007,6 +2035,12 @@ body.popup-open {
 .product-nav-btn svg {
   width: 20px;
   height: 20px;
+}
+
+.btn.btn-secondary.promo{
+  background-color: var(--white);
+  color: var(--gray-dark);
+  font-weight: 600;
 }
 
 /* Image counter */
