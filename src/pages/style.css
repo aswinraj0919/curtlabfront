@@ -216,7 +216,6 @@
   display: flex;
   align-items: flex-start;
   gap: 0;
-  background-color: rgba(255, 255, 255, 0.9);
   padding: 15px 20px;
   border-radius: 10px;
   backdrop-filter: blur(10px);
@@ -240,6 +239,7 @@
   color: var(--text-color);
   margin: 0;
   line-height: 1.2;
+  font-weight: 400;
 }
 
 .badge-text p {
@@ -340,6 +340,11 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+.collection-content.home{
+  width: 450px;
+}
+
+
 .btn-book {
   display: flex;
   align-items: center;
@@ -389,11 +394,20 @@
 .why-us-section,
 .features-section,
 .products-grid-section {
-  padding: 100px 40px;
   background-image: url('../../public/images/Frame43.png');
   background-size: cover;
   height: fit-content;
+
 }
+.collections-section{
+  background-image: url('../../public/images/MacBook Air - 1.png');
+}
+
+.why-us-section{
+  background-image: url('../../public/images/MacBook Air - 2.png');
+  background-size: fit-content;
+}
+
 
 .collection-header {
   padding: 40px 40px 0;
@@ -509,6 +523,8 @@
   font-size: 12px;
   font-weight: 400;
   margin-bottom: 20px;
+  overflow: hidden;
+  height: 75px;
 }
 
 .collection-btn {
@@ -595,6 +611,10 @@
   pointer-events: none;
   transition: var(--transition);
   text-align: center;
+}
+
+.points{
+  padding: 20px;
 }
 
 .step-image-wrapper:hover .step-number-overlay {
@@ -742,17 +762,6 @@
   color: var(--white);
   position: relative;
   overflow: hidden;
-}
-
-.contact-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 40%;
-  height: 100%;
-  background-color: rgba(206, 173, 86, 0.05);
-  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .contact-container {
@@ -1111,8 +1120,16 @@
   gap: 30px;
 }
 
+.about-grid h3{
+    font-family: 'NHaasGrotesk';
+  font-weight: 400;
+  font-size: 32px; 
+  line-height: 104%;
+  text-align: justify;
+}
+
 .about-grid h2 {
-  font-family: Neue Haas Grotesk Display Pro;
+  font-family: 'Faculty Glyphic';
   font-weight: 600;
   font-size: 20px;
   line-height: 104%;
@@ -1121,7 +1138,7 @@
 }
 
 .about-grid h1 {
-  font-family: Faculty Glyphic;
+  font-family: 'Faculty Glyphic';
   font-weight: 400;
   font-size: 24px;
   line-height: 104%;
@@ -1157,7 +1174,6 @@
 .about-content.third p {
   display: flex;
   flex-direction: row;
-  margin: 15px;
 }
 
 .whyCurtLab {
@@ -1188,7 +1204,6 @@
 }
 
 .about-content p {
-  margin: 10px 5px;
   width: 100%;
   text-align: left;
 }
@@ -1230,7 +1245,7 @@
 }
 
 .product-link {
-  font-family: 'Neue Haas Grotesk Display Pro';
+  font-family: 'NHaasGrotesk';
   font-weight: 400;
   font-size: 20px;
   line-height: 104%;
@@ -1249,7 +1264,7 @@
 }
 
 .product-link.active {
-  font-family: 'Neue Haas Grotesk Display Pro';
+  font-family: 'NHaasGrotesk';
   font-weight: 600;
   font-size: 20px;
   line-height: 104%;
@@ -1268,11 +1283,13 @@
 }
 
 .about-content.products h1 {
-  font-family: 'Neue Haas Grotesk Display Pro';
+  font-family: 'NHaasGrotesk';
   font-weight: 400;
   font-size: 24px;
   line-height: 104%;
   text-transform: uppercase;
+      letter-spacing: 3px;
+
 }
 
 
@@ -1594,7 +1611,7 @@
   }
 
   .hero-subtitle {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
   }
 

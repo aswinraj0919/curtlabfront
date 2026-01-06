@@ -5,7 +5,7 @@ import Bottom from '../components/bottom';
 import './style.css';
 
 export default function Home() {
-   const products = [
+  const products = [
     { id: 3, name: 'Sheer & Blackout Curtains', content: 'The perfect duo for style and functionality — sheer and blackout curtains layered together allow you to adjust the light and privacy according to your mood and time of day. The sheer layer offers brightness and elegance during the day, while the blackout layer ensures complete darkness and privacy at night. This combination adds depth, luxury, and versatility to any room setting.', image: '/images/product-3.jpg' },
     { id: 4, name: 'Eyelet Curtains – Blackout', content: 'Eyelet blackout curtains are a modern and stylish choice featuring polished metal rings at the top for easy sliding and a neat, uniform drape. The blackout fabric blocks sunlight and offers privacy, making them ideal for bedrooms and offices. They are low-maintenance, elegant, and available in a wide range of colors and textures to match both contemporary and classic interiors.', image: '/images/product-4.jpg' },
     { id: 6, name: 'Wave Style Curtains – Blackout', content: 'Wave style blackout curtains feature a continuous, soft wave pattern that creates a clean and uniform look from ceiling to floor. The sleek design complements modern interiors, while the blackout material ensures total light control, thermal insulation, and noise reduction. These curtains are ideal for luxury residences, hotels, and offices where both aesthetics and performance matter.', image: '/images/product-6.jpg' },
@@ -17,7 +17,7 @@ export default function Home() {
 
 
   ];
-   const scrollRef = useRef(null);
+  const scrollRef = useRef(null);
 
   useEffect(() => {
     const slider = scrollRef.current;
@@ -33,7 +33,7 @@ export default function Home() {
       slider.removeEventListener("wheel", onWheel);
     };
   }, []);
-  
+
   return (
     <div className="home-page">
       <Header />
@@ -59,7 +59,6 @@ export default function Home() {
 
           <p className="hero-subtitle">
             Premium curtains, blinds, and drapery crafted for your home.
-            <br />
             Free consultation. Same-day appointments available.
           </p>
 
@@ -74,24 +73,29 @@ export default function Home() {
 
 
       <section className='collections-section'>
-              <div className="about-content products">
-        <h1>Our Products</h1>
-      </div>
+        <div className="about-content products">
+          <h1>Our Products</h1>
+        </div>
         <div className='collections-grid' ref={scrollRef}>
-            {products.map((product) => (
+          {products.map((product) => (
 
-          <div className='collection-items'>
-            <img src={product.image}/>
-            <div className="collection-content">
-              <h1>{product.name}</h1>
-                  <p>{product.content}</p>
-              <div className='collection-btn'>
-                <button className='btn btn-secondary'>Book Now</button>
-                <button className='btn btn-primary'>Know More</button>
+            <div className='collection-items home'>
+              <img src={product.image} />
+              <div className="collection-content home">
+                <h1>{product.name}</h1>
+                <p>{product.content}</p>
+                <div className='collection-btn'>
+                  <button className='btn btn-secondary'>Book Now<svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                    <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                    <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                  </svg>
+                  </button>
+                  <button className='btn btn-primary'>Know More</button>
+                </div>
               </div>
             </div>
-          </div>
-            ))}
+          ))}
         </div>
       </section>
 
@@ -175,20 +179,26 @@ export default function Home() {
             </div>
           </div>
 
+          
           <div className='promo-banner'>
             <div className='promo-step-1'>
               <h1>“Proudly Tailored in UAE”</h1>
             </div>
             <div className='promo-step-2'>
               <h2>Book you’r slot now</h2>
-              <button className='btn btn-secondary'>Book Now</button>
+              <button className='btn btn-secondary'>Book Now <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+              </svg>
+              </button>
             </div>
           </div>
 
         </div>
       </section>
 
-      
+
       <Bottom />
 
     </div>

@@ -250,7 +250,7 @@ export default function Bottom() {
                 </div>
             </section >
 
-            <footer className="footer" aria-label="Footer">
+            <div className="footer" aria-label="Footer">
                 <Logo />
                 <div className='media-footer'>
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -270,7 +270,7 @@ export default function Bottom() {
                     </svg>
                 </div>
                 <h6>All rights reserved to CurtLab</h6>
-            </footer>
+            </div>
         </div >
     );
 };

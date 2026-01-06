@@ -64,7 +64,7 @@ export default function About() {
 
       <section className='about-section'>
         <div className='about-grid'>
-          <h2>Designed for Every Window</h2>
+          <h3>Designed for Every Window</h3>
           <div className="about-content first">
             <p>CurtLab is your one-stop solution for curtains, created to make window styling simple, reliable, and effortless. From the first consultation to final installation, we take care of every detail—so you don’t have to. Every curtain we deliver is thoughtfully designed and fully made to fit your space, your needs, and your lifestyle.
               <span>Powered by Andona Interiors LLC, Abu Dhabi, CurtLab brings professional expertise and design-led thinking into homes that value comfort, quality, and understated elegance.</span></p>
