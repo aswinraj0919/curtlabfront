@@ -1,0 +1,22 @@
+Place your images here:
+
+Required images for the website:
+
+HOME PAGE:
+- hero-bg-1.jpg (1440x814px) - Hero background image
+- collection-1.jpg (400x350px) - Modern Curtains
+- collection-2.jpg (400x350px) - Premium Blinds
+- collection-3.jpg (400x350px) - Elegant Drapery
+- collection-4.jpg (400x350px) - Sheer Elegance
+
+PRODUCTS PAGE:
+- product-1.jpg to product-12.jpg (400x300px each) - Product images
+
+ABOUT PAGE:
+- about-story.jpg (600x400px) - About story section image
+- team-1.jpg (400x300px) - Team member photo
+- team-2.jpg (400x300px) - Team member photo
+- team-3.jpg (400x300px) - Team member photo
+
+You can use any curtain/blind related images.
+If images are not available, placeholder colors will be shown.

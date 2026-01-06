@@ -8,7 +8,7 @@ import Curtains from './pages/Curtains';
 import Blinds from './pages/Blinds';
 import Blogs from './pages/blogs';
 
-import UnderMaintenance from './pages/underMaintenance'
+// import UnderMaintenance from './pages/underMaintenance'
 import './App.css';
 
 export default function App() {

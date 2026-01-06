@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
 import Bottom from '../components/bottom';
 import ProductsHead from '../components/ProductsHead';
-
 import './style.css';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Products() {
+
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   const products = [
     { id: 1, name: 'Sheer Curtains', content: 'Sheer curtains are crafted from lightweight, translucent fabrics that gently filter sunlight, creating a calm and welcoming atmosphere. They soften natural light, offering daytime privacy without blocking your outdoor view. Ideal for living rooms, dining areas, and balconies, sheer curtains add elegance and movement to any space while complementing any interior style.', image: '/images/product-1.jpg' },
@@ -29,10 +31,49 @@ export default function Products() {
 
   const location = useLocation();
 
+  const handleKnowMoreClick = (product) => {
+    setSelectedProduct(product);
+    setShowPopup(true);
+    // Prevent scrolling when popup is open
+    document.body.style.overflow = 'hidden';
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    setSelectedProduct(null);
+    // Restore scrolling
+    document.body.style.overflow = 'auto';
+  };
+
   const handleSubmitContact = (e) => {
     e.preventDefault();
-    // Handle form submission
     console.log('Form submitted');
+  };
+
+  // Close popup when clicking outside
+  const handlePopupOutsideClick = (e) => {
+    if (e.target.classList.contains('popup-overlay')) {
+      handleClosePopup();
+    }
+  };
+
+  // Add keyboard support (Escape key to close)
+  React.useEffect(() => {
+    const handleEscapeKey = (e) => {
+      if (e.key === 'Escape' && showPopup) {
+        handleClosePopup();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscapeKey);
+    return () => document.removeEventListener('keydown', handleEscapeKey);
+  }, [showPopup]);
+
+  const handleBookNow = () => {
+    // Scroll to contact section or open booking modal
+    const contactSection = document.getElementById('contact');
+    contactSection?.scrollIntoView({ behavior: 'smooth' });
+    handleClosePopup();
   };
 
   return (
@@ -49,12 +90,12 @@ export default function Products() {
               <div className='category-name'>
                 <h2>Curtain's</h2>
                 <Link
-              to="/products/curtains"
-              className={`product-link ${location.pathname === '/products/curtains' ? 'active' : ''}`}
-            // onClick={closeMenu}
-            >
-                <button className='btn btn-secondary product'>Book Now</button>
-            </Link>
+                  to="/products/curtains"
+                  className={`product-link ${location.pathname === '/products/curtains' ? 'active' : ''}`}
+                // onClick={closeMenu}
+                >
+                  <button className='btn btn-secondary product'>Book Now</button>
+                </Link>
               </div>
               <img src="/images/Frame 69.png" alt="" />
             </div>
@@ -62,12 +103,12 @@ export default function Products() {
               <div className='category-name'>
                 <h2>Blind's</h2>
                 <Link
-              to="/products/blinds"
-              className={`product-link ${location.pathname === '/products/blinds' ? 'active' : ''}`}
-            // onClick={closeMenu}
-            >
-                <button className='btn btn-secondary product'>Book Now</button>
-            </Link>
+                  to="/products/blinds"
+                  className={`product-link ${location.pathname === '/products/blinds' ? 'active' : ''}`}
+                // onClick={closeMenu}
+                >
+                  <button className='btn btn-secondary product'>Book Now</button>
+                </Link>
               </div>
               <img src="/images/Frame 70.png" alt="" />
             </div>
@@ -103,14 +144,28 @@ export default function Products() {
 
           <div className="products-grid">
             {products.map((product) => (
-              <div className='collection-items'>
-                <img src={product.image} />
+              <div key={product.id} className='collection-items'>
+                <img src={product.image} alt={product.name} />
                 <div className="collection-content">
                   <h1>{product.name}</h1>
-                  <p>{product.content}</p>
+                  <p>{product.content.substring(0, 150)}...</p>
                   <div className='collection-btn'>
-                    <button className='btn btn-secondary'>Book Now</button>
-                    <button className='btn btn-primary'>Know More</button>
+                    <button className='btn btn-secondary' onClick={handleBookNow}
+                    >Book Now<svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                        <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                        <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
+                      </svg></button>
+                    <button
+                      className='btn btn-primary'
+                      onClick={() => handleKnowMoreClick(product)}
+                    >
+                      Know More<svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0.283911" y1="4.54263" x2="17.8864" y2="4.54263" stroke="white" stroke-width="0.567822" stroke-linecap="round" />
+                        <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="white" stroke-width="0.567822" stroke-linecap="round" />
+                        <line x1="18.1704" y1="4.66018" x2="14.0293" y2="8.80124" stroke="white" stroke-width="0.567822" stroke-linecap="round" />
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -118,6 +173,34 @@ export default function Products() {
           </div>
         </div>
       </section>
+      {showPopup && selectedProduct && (
+        <div
+          className="popup-overlay"
+          onClick={handlePopupOutsideClick}
+          aria-hidden={!showPopup}
+        >
+          <div className=" products-grid product-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+            <div className="popup-content">
+              <div className="popup-image-container">
+                <img
+                  src={selectedProduct.image}
+                  alt={selectedProduct.name}
+                  className="popup-image"
+                />
+              </div>
+              <div className="popup-details">
+                <h1 id="popup-title">{selectedProduct.name}</h1>
+
+                <p>{selectedProduct.content}</p>
+                <div className="popup-actions">
+                  <button className='btn btn-primary' onClick={handleBookNow}
+                  >Book Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Contact Section */}
       <Bottom />

@@ -1,10 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef ,useState} from "react";
+import { Link, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Bottom from '../components/bottom';
 
 import './style.css';
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const location = useLocation();
+
   const products = [
     { id: 3, name: 'Sheer & Blackout Curtains', content: 'The perfect duo for style and functionality — sheer and blackout curtains layered together allow you to adjust the light and privacy according to your mood and time of day. The sheer layer offers brightness and elegance during the day, while the blackout layer ensures complete darkness and privacy at night. This combination adds depth, luxury, and versatility to any room setting.', image: '/images/product-3.jpg' },
     { id: 4, name: 'Eyelet Curtains – Blackout', content: 'Eyelet blackout curtains are a modern and stylish choice featuring polished metal rings at the top for easy sliding and a neat, uniform drape. The blackout fabric blocks sunlight and offers privacy, making them ideal for bedrooms and offices. They are low-maintenance, elegant, and available in a wide range of colors and textures to match both contemporary and classic interiors.', image: '/images/product-4.jpg' },
@@ -33,6 +38,12 @@ export default function Home() {
       slider.removeEventListener("wheel", onWheel);
     };
   }, []);
+
+      const handleBookNow = () => {
+    // Scroll to contact section or open booking modal
+    const contactSection = document.getElementById('contact');
+    contactSection?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <div className="home-page">
@@ -63,7 +74,7 @@ export default function Home() {
           </p>
 
           <div className="hero-buttons">
-            <button className="btn btn-primary">Book Free Consultation</button>
+            <button className="btn btn-primary" onClick={handleBookNow}>Book Free Consultation</button>
             <button className="btn btn-secondary">Contact Us</button>
           </div>
         </div>
@@ -85,13 +96,20 @@ export default function Home() {
                 <h1>{product.name}</h1>
                 <p>{product.content}</p>
                 <div className='collection-btn'>
-                  <button className='btn btn-secondary'>Book Now<svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <button className='btn btn-secondary' onClick={handleBookNow}>Book Now<svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
                     <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
                     <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
                   </svg>
                   </button>
-                  <button className='btn btn-primary'>Know More</button>
+
+                  <button className='btn btn-primary'>Know More<svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="0.283911" y1="4.54263" x2="17.8864" y2="4.54263" stroke="white" stroke-width="0.567822" stroke-linecap="round" />
+                    <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="white" stroke-width="0.567822" stroke-linecap="round" />
+                    <line x1="18.1704" y1="4.66018" x2="14.0293" y2="8.80124" stroke="white" stroke-width="0.567822" stroke-linecap="round" />
+                  </svg>
+                  </button>
+
                 </div>
               </div>
             </div>
@@ -99,11 +117,19 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="view-more">
+        <Link
+            to="/products"
+          >
+        <button className="btn btn-secondary view-more">View More</button>
+          </Link>
+      </div>
+
       {/* Why Us Section */}
       <section className="why-us-section" aria-label="Why choose us">
         <div className="section-container">
-          <div className="why-us-header">
-            <h2>Why Choose Us</h2>
+          <div className=" about-content products ">
+            <h1>Why Us ?</h1>
           </div>
 
           <div className="why-us-grid">
@@ -179,14 +205,14 @@ export default function Home() {
             </div>
           </div>
 
-          
+
           <div className='promo-banner'>
             <div className='promo-step-1'>
               <h1>“Proudly Tailored in UAE”</h1>
             </div>
             <div className='promo-step-2'>
               <h2>Book you’r slot now</h2>
-              <button className='btn btn-secondary'>Book Now <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <button className='btn btn-secondary' onClick={handleBookNow}>Book Now <svg width="15" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
                 <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
                 <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />

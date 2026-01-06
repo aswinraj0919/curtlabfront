@@ -19,7 +19,13 @@ export default function Header() {
     <header className="header">
       <div className="header-container">
         <div className="logo">
-          <Logo />
+
+          <Link
+            to="/"
+            onClick={closeMenu}
+          >
+            <Logo/>
+          </Link>
         </div>
 
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
