@@ -166,7 +166,9 @@ export default function Home() {
 
           <div className="hero-buttons">
             <button className="btn btn-primary" onClick={handleBookNow}>Book Free Consultation</button>
-            <button className="btn btn-secondary">Contact Us</button>
+            <Link to='/contact'>
+              <button className="btn btn-secondary ">Contact Us</button>
+            </Link>
           </div>
         </div>
       </section>

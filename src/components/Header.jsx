@@ -24,7 +24,7 @@ export default function Header() {
             to="/"
             onClick={closeMenu}
           >
-            <Logo/>
+            <Logo />
           </Link>
         </div>
 
@@ -51,6 +51,9 @@ export default function Header() {
             Products
           </Link>
           <Link
+            to="/gallery"
+            className={`nav-link ${location.pathname === '/gallery' ? 'active' : ''}`}
+            onClick={closeMenu}
           >
             Gallery / Inspirations
           </Link>

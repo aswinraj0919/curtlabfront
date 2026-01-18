@@ -32,8 +32,8 @@ import Bottom from '../components/bottom';
                         </div>
 
                         <h1 className="about-title">
-                            <span>About</span>
-                            <span className="title-large">Our Works</span>
+                            <span>About Our Works</span>
+                            <span className="title-large"></span>
                         </h1>
 
                         <button
