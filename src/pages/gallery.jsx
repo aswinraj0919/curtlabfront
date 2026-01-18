@@ -8,20 +8,20 @@ function App() {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
     const images = [
-        'public/images/product-1.jpg',
-        'public/images/product-2.jpg',
-        'public/images/product-3.jpg',
-        'public/images/product-4.jpg',
-        'public/images/product-5.jpg',
-        'public/images/product-6.jpg',
-        'public/images/product-7.jpg',
-        'public/images/product-8.jpg',
-        'public/images/product-9.jpg',
-        'public/images/product-10.jpg',
-        'public/images/product-11.jpg',
-        'public/images/product-12.jpg',
-        'public/images/product-13.jpg',
-        'public/images/product-14.jpg',
+        '/images/product-1.jpg',
+        '/images/product-2.jpg',
+        '/images/product-3.jpg',
+        '/images/product-4.jpg',
+        '/images/product-5.jpg',
+        '/images/product-6.jpg',
+        '/images/product-7.jpg',
+        '/images/product-8.jpg',
+        '/images/product-9.jpg',
+        '/images/product-10.jpg',
+        '/images/product-11.jpg',
+        '/images/product-12.jpg',
+        '/images/product-13.jpg',
+        '/images/product-14.jpg',
 
     ];
 
