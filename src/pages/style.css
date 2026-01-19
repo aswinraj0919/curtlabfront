@@ -735,9 +735,8 @@ body.popup-open {
 .collection-content {
   padding: 30px;
   color: var(--primary-color);
-  width: 350px;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .collection-content h1 {
@@ -759,14 +758,15 @@ body.popup-open {
 .collection-content p {
   font-family: 'Neue Haas Grotesk Display Pro';
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 104%;
   margin-bottom: 20px;
   overflow: hidden;
   height: 75px;
 }
-p{
-      text-align: justify;
+
+p {
+  text-align: justify;
 
 }
 
@@ -1094,7 +1094,7 @@ p{
   box-shadow: 0 10px 25px rgba(206, 172, 86, 0.3);
 }
 
-.bottom{
+.bottom {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1405,7 +1405,8 @@ p{
   align-items: flex-end;
   text-align: right;
 }
-.about-content.forth h1{
+
+.about-content.forth h1 {
   padding-top: 20px;
 }
 
@@ -1607,15 +1608,16 @@ p{
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
   }
-  .step-image-wrapper.step-1{
+
+  .step-image-wrapper.step-1 {
     border-radius: 25px 0 0 0;
   }
 
-  .step-image-wrapper.step-2{
+  .step-image-wrapper.step-2 {
     border-radius: 0 25px 0 0;
   }
 
-  .step-image-wrapper.step-4{
+  .step-image-wrapper.step-4 {
     border-radius: 0;
   }
 
@@ -1634,14 +1636,16 @@ p{
     justify-content: space-evenly;
   }
 
-  .step-image-wrapper.step-1{
+  .step-image-wrapper.step-1 {
     border-radius: 25px 25px 0 0;
   }
-    .step-image-wrapper.step-2{
+
+  .step-image-wrapper.step-2 {
     border-radius: 0;
-  
+
   }
-  .step-image-wrapper.step-4{
+
+  .step-image-wrapper.step-4 {
     border-radius: 0;
   }
 
@@ -1807,7 +1811,8 @@ p{
   .step-content h3 {
     font-size: 24px;
   }
-  .about-grid h3{
+
+  .about-grid h3 {
     font-size: 20px;
   }
 
@@ -1930,11 +1935,11 @@ p{
   }
 
   .collection-content {
-    width: 250px;
+    width: auto;
     gap: 20px;
   }
 
-  .collection-content h1{
+  .collection-content h1 {
     height: auto;
   }
 
@@ -2033,7 +2038,7 @@ p{
 }
 
 .promo-step-2 btn {
-    background-color: white;
+  background-color: white;
 }
 
 .product-image-container:hover .product-nav-btn {
@@ -2059,7 +2064,7 @@ p{
   height: 20px;
 }
 
-.btn.btn-secondary.promo{
+.btn.btn-secondary.promo {
   background-color: var(--white);
   color: var(--gray-dark);
   font-weight: 600;
@@ -2223,13 +2228,14 @@ p{
   gap: 10px;
   width: 100%;
 }
+
 .bar {
-    content: '';
-    display: flex;
-    height: 6px;
-    width: 100%;
-    background-color: #839CB6;
-;
+  content: '';
+  display: flex;
+  height: 6px;
+  width: 100%;
+  background-color: #839CB6;
+  ;
 }
 
 .popup-description h3 {
@@ -2436,8 +2442,13 @@ p{
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .lightbox-content {
@@ -2501,8 +2512,15 @@ p{
 }
 
 @keyframes zoomIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .image-counter {
@@ -2518,6 +2536,7 @@ p{
 }
 
 .thumbnails {
+  scrollbar-width: none;
   position: absolute;
   bottom: -80px;
   left: 50%;
@@ -2560,19 +2579,19 @@ p{
     background: rgba(0, 0, 0, 0.3);
     padding: 15px 10px;
   }
-  
+
   .prev {
     left: 10px;
   }
-  
+
   .next {
     right: 10px;
   }
-  
+
   .thumbnails {
     bottom: -70px;
   }
-  
+
   .thumbnail {
     width: 50px;
     height: 50px;
@@ -2632,4 +2651,50 @@ p{
 
 .image-item:hover .image-overlay {
   opacity: 1;
+}
+
+
+.works-catogerey {
+  max-width: 1200px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.blog-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.collection-items.grid {
+  background: #253F4B;
+}
+
+.blog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  color: var(--white);
+}
+
+.blog-content h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Faculty Glyphic';
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.blog-content p{
+  font-family: 'Neue Haas Grotesk Display Pro';
+font-weight: 400;
+font-size: 12px;
+
 }
