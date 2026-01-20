@@ -7,22 +7,29 @@ function App() {
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-    const images = [
-        '/images/product-1.jpg',
-        '/images/product-2.jpg',
-        '/images/product-3.jpg',
-        '/images/product-4.jpg',
-        '/images/product-5.jpg',
-        '/images/product-6.jpg',
-        '/images/product-7.jpg',
-        '/images/product-8.jpg',
-        '/images/product-9.jpg',
-        '/images/product-10.jpg',
-        '/images/product-11.jpg',
-        '/images/product-12.jpg',
-        '/images/product-13.jpg',
-        '/images/product-14.jpg',
+
+    const imageIds = [
+        "11xUC0bqBtuBkNegWpHaEwLT8uI4t-iK7",
+        "14W9P1WAN3cbkxXYXMzS6iMJVYpB3YApR",
+        "1FX5uLWQjsB_WXJ7ED4m-7pa23SHIPgxt",
+        "1GFyEho0_BhaNLIKqZ_6F-B1QVfDoHBMB",
+        "1HtgpYgMvMWSlCTAgDbYouBxfPtIa5yJZ",
+        "1K2DHxdH0rDGRB13Qjvn2xklw3k7otfiM",
+        "1KKFiv3STDJQrVVU6kkdasAhbEoHpqW1M",
+        "1Lo9Fu7Lcm94YmbzcYK8SHtHKGLdNDwZ3",
+        "1_E0BCx9sdWNn9By3zpyfQdcDLN_F5d3E",
+        "1aPpB_QsiKiDNAIoCamjgaXcTQ4TqdfDO",
+        "1iPvZAsPxGRSTc37SmAufXvsCAT4cAqAx",
+        "1kCvEQttKAq4PndlHRosrYr4vtHSeK03i",
+        "1mFZV-IHnspg6NW8aWPvXs33koeDgaZZL",
+        "1on-vjubNiE8bO_zIWcdQ3SHLFbg10VW5",
+        "1pSS1jm3wq0FMHO6X9WD2vjycFLh9pfjE",
+        "1q78z7pCU1CzdKZx6MFksAAWbbCJSGr22",
+        "1q8u4p_4FydvgRvYQAmjc-qbF8soxlSlU",
+        "1x7yjFp1Um6kPsWjEFyWlRgoumLmyLnRP",
+        "1zZJbCnZYVAXC573agvwg83tZrKjE9W8a"
     ];
+
 
     const openLightbox = (index) => {
         setSelectedImageIndex(index);
@@ -43,20 +50,21 @@ function App() {
                     </div>
                 </div>
                 <div className="image-grid">
-                    {images.map((img, index) => (
+                    {imageIds.map((id, index) => (
                         <div
-                            key={index}
+                            key={id}
                             className="image-item"
                             onClick={() => openLightbox(index)}
                         >
                             <img
-                                src={img}
+                                src={`https://drive.google.com/thumbnail?id=${id}&sz=w1000`}
                                 alt={`Gallery image ${index + 1}`}
                                 className="gallery-thumbnail"
                             />
                             <div className="image-overlay">Click to view</div>
                         </div>
                     ))}
+
                 </div>
 
                 {isLightboxOpen && (

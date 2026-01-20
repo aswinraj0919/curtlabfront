@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from '../components/Header';
 import Bottom from '../components/bottom';
+import { Link, useLocation } from 'react-router-dom';
+
 
 const handleBookNow = () => {
     const contactSection = document.getElementById('contact');
@@ -53,105 +55,137 @@ export default function Blogs() {
             <section>
                 <div className='main-content'>
                     <div className='works-catogerey'>
-                        <button className='btn btn-secondary'>Office  Designs</button>
+                        <div className='frame-1'>
+                            <button className='btn btn-secondary'>Home  Designs</button>
+                            <button className='btn btn-secondary'>Office  Designs</button>
+                        </div>
                         <button className='btn btn-secondary'>Apartment  Designs</button>
-                        <button className='btn btn-secondary'>Home  Designs</button>
                     </div>
                     <div className='blog-grid'>
                         <div className='collection-items grid'>
                             <img src="/images/product-1.jpg" alt="" />
                             <div className='blog-content'>
-                                <h2>The Abu Dhabi Home<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
-                                    <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
-                                </svg>
+                                <h2>The Abu Dhabi Home
+                                    <Link to="/blogs/blog">
+                                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
+                                            <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
+                                        </svg></Link>
                                 </h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do 
-eiusmod tempor incididunt ut</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                                    eiusmod tempor incididunt ut</p>
                             </div>
                         </div>
-                    <div className='collection-items grid'>
+                        <div className='collection-items grid'>
                             <img src="/images/product-1.jpg" alt="" />
                             <div className='blog-content'>
-                                <h2>The Abu Dhabi Home<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
-                                    <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
-                                </svg>
+                                <h2>The Abu Dhabi Home
+                                    <Link to="/blogs/blog">
+                                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
+                                            <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
+                                        </svg></Link>
                                 </h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do 
-eiusmod tempor incididunt ut</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                                    eiusmod tempor incididunt ut</p>
                             </div>
                         </div>
-                    <div className='collection-items grid'>
+                        <div className='collection-items grid'>
                             <img src="/images/product-1.jpg" alt="" />
                             <div className='blog-content'>
-                                <h2>The Abu Dhabi Home<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
-                                    <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
-                                </svg>
+                                <h2>The Abu Dhabi Home
+                                    <Link to="/blogs/blog">
+                                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
+                                            <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
+                                        </svg></Link>
                                 </h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do 
-eiusmod tempor incididunt ut</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                                    eiusmod tempor incididunt ut</p>
                             </div>
                         </div>
-                    <div className='collection-items grid'>
+                        <div className='collection-items grid'>
                             <img src="/images/product-1.jpg" alt="" />
                             <div className='blog-content'>
-                                <h2>The Abu Dhabi Home<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
-                                    <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
-                                </svg>
+                                <h2>The Abu Dhabi Home
+                                    <Link to="/blogs/blog">
+                                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
+                                            <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
+                                        </svg></Link>
                                 </h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do 
-eiusmod tempor incididunt ut</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                                    eiusmod tempor incididunt ut</p>
                             </div>
                         </div>
-                    <div className='collection-items grid'>
+                        <div className='collection-items grid'>
                             <img src="/images/product-1.jpg" alt="" />
                             <div className='blog-content'>
-                                <h2>The Abu Dhabi Home<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
-                                    <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
-                                </svg>
+                                <h2>The Abu Dhabi Home
+                                    <Link to="/blogs/blog">
+                                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
+                                            <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
+                                        </svg></Link>
                                 </h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do 
-eiusmod tempor incididunt ut</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                                    eiusmod tempor incididunt ut</p>
                             </div>
                         </div>
-                    <div className='collection-items grid'>
+                        <div className='collection-items grid'>
                             <img src="/images/product-1.jpg" alt="" />
                             <div className='blog-content'>
-                                <h2>The Abu Dhabi Home<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
-                                    <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
-                                </svg>
+                                <h2>The Abu Dhabi Home
+                                    <Link to="/blogs/blog">
+                                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
+                                            <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
+                                        </svg></Link>
                                 </h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do 
-eiusmod tempor incididunt ut</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                                    eiusmod tempor incididunt ut</p>
                             </div>
                         </div>
-                    <div className='collection-items grid'>
+                        <div className='collection-items grid'>
                             <img src="/images/product-1.jpg" alt="" />
                             <div className='blog-content'>
-                                <h2>The Abu Dhabi Home<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
-                                    <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
-                                </svg>
+                                <h2>The Abu Dhabi Home
+                                    <Link to="/blogs/blog">
+                                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
+                                            <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
+                                        </svg></Link>
                                 </h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do 
-eiusmod tempor incididunt ut</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                                    eiusmod tempor incididunt ut</p>
                             </div>
                         </div>
-                    <div className='collection-items grid'>
+                        <div className='collection-items grid'>
                             <img src="/images/product-1.jpg" alt="" />
                             <div className='blog-content'>
-                                <h2>The Abu Dhabi Home<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
-                                    <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
-                                </svg>
+                                <h2>The Abu Dhabi Home
+                                    <Link to="/blogs/blog">
+                                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
+                                            <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
+                                        </svg></Link>
                                 </h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do 
-eiusmod tempor incididunt ut</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                                    eiusmod tempor incididunt ut</p>
+                            </div>
+                        </div>
+                        <div className='collection-items grid'>
+                            <img src="/images/product-1.jpg" alt="" />
+                            <div className='blog-content'>
+                                <h2>The Abu Dhabi Home
+                                    <Link to="/blogs/blog">
+                                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="17" cy="17" r="16" stroke="#F1F0E5" stroke-width="2" />
+                                            <path d="M14 9L22 17L14 25" stroke="#F1F0E5" stroke-width="2" stroke-linecap="round" />
+                                        </svg></Link>
+                                </h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                                    eiusmod tempor incididunt ut</p>
                             </div>
                         </div>
                     </div>

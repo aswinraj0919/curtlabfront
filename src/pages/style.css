@@ -1873,6 +1873,9 @@ p {
     flex-direction: column;
     gap: 30px;
   }
+  .works-catogerey{
+    flex-direction: column;
+  }
 
 }
 
@@ -2656,6 +2659,13 @@ p {
   display: flex;
   justify-content: center;
   gap: 30px;
+  align-items: center;
+}
+
+.frame-1 {
+  display: flex;
+  gap: 30px;
+  align-items: center;
 }
 
 .blog-grid {
@@ -2715,6 +2725,6 @@ p {
   line-height: 180%;
 }
 
-.main-content{
+.main-content {
   padding: 20px;
 }
