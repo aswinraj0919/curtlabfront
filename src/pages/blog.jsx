@@ -33,8 +33,8 @@ export default function Blog() {
                     </div>
 
                     <h1 className="about-title">
-                        <span>About</span>
-                        <span className="title-large">CurtLab</span>
+                        <span>The</span>
+                        <span className="title-large">Abu Dhabi Home</span>
                     </h1>
 
                     <button
