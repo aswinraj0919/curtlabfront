@@ -22,7 +22,6 @@ function App() {
         '/images/product-12.jpg',
         '/images/product-13.jpg',
         '/images/product-14.jpg',
-
     ];
 
     const openLightbox = (index) => {

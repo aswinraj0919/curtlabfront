@@ -189,6 +189,7 @@
   line-height: 32px;
   color: var(--text-light);
   margin-bottom: 40px;
+  text-align: center;
 }
 
 /* Products/About Hero Specific */
@@ -359,11 +360,6 @@
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-
-.collection-content.home {
-  width: 450px;
-}
-
 
 .btn-book {
   display: flex;
@@ -2692,9 +2688,29 @@ p {
   font-size: 20px;
 }
 
-.blog-content p{
-  font-family: 'Neue Haas Grotesk Display Pro';
-font-weight: 400;
-font-size: 12px;
+.blog-content p {
+  font-family: 'NHaasGrotesk';
+  font-weight: 400;
+  font-size: 12px;
 
+}
+
+.collection-content.home {
+  width: 350px;
+}
+
+.blog-details {
+
+  max-width: 1200px;
+  margin: 50px auto;
+
+}
+
+.blog-details p {
+  font-family: 'NHaasGrotesk';
+  font-weight: 400;
+  font-size: 20px;
+  text-align: justify;
+  padding: 20px;
+  line-height: 180%;
 }

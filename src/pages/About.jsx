@@ -10,13 +10,6 @@ export default function About() {
     contactSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleSubmitContact = (e) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted');
-  };
-
-
   return (
     <div className="about-page">
       <Header />

@@ -7,6 +7,7 @@ import Contact from './pages/contact';
 import Curtains from './pages/Curtains';
 import Blinds from './pages/Blinds';
 import Blogs from './pages/blogs';
+import Blog from './pages/blog';
 import Gallery from './pages/gallery';
 
 // import UnderMaintenance from './pages/underMaintenance'
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blogs/blog" element={<Blog />} />
         <Route path="/gallery" element={<Gallery />} />
       </Routes>
     </Router>

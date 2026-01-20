@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Bottom from '../components/bottom';
-
 import './style.css';
 
 export default function Home() {
@@ -225,7 +224,7 @@ export default function Home() {
                     </div>
                   )}
                 </div>
-                <div className="collection-content">
+                <div className="collection-content home">
                   <h1>{product.name}</h1>
                   <p>{product.content.substring(0, 150)}...</p>
                   <div className='collection-btn'>
