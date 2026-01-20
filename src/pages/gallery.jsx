@@ -7,7 +7,6 @@ function App() {
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-
     const imageIds = [
         "11xUC0bqBtuBkNegWpHaEwLT8uI4t-iK7",
         "14W9P1WAN3cbkxXYXMzS6iMJVYpB3YApR",
@@ -35,6 +34,11 @@ function App() {
         setSelectedImageIndex(index);
         setIsLightboxOpen(true);
     };
+
+    const images = imageIds.map(
+  id => `https://drive.google.com/thumbnail?id=${id}&sz=w2000`
+);
+
 
     return (
         <div>
