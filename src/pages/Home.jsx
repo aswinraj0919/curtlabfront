@@ -135,8 +135,18 @@ export default function Home() {
     };
   }, []);
 
+  // loderImg disappear after 5 sec
+
+  useEffect(() => {
+    const loderImg = document.querySelector('.loderImg');
+    setTimeout(() => {
+      loderImg.style.display = 'none';
+    }, 8000)
+  })
+
   return (
     <div className="home-page">
+        <video className="loderImg" src="/images/loder.mp4" autoPlay muted></video>
       <Header />
 
       {/* Hero Section */}
@@ -165,9 +175,6 @@ export default function Home() {
 
           <div className="hero-buttons">
             <button className="btn btn-primary" onClick={handleBookNow}>Book Free Consultation</button>
-            <Link to='/contact'>
-              <button className="btn btn-secondary ">Contact Us</button>
-            </Link>
           </div>
         </div>
       </section>
@@ -277,7 +284,6 @@ export default function Home() {
                 <div className="step-number-overlay">01
                   <div className="step-content">
                     <h3>Book Your Free Consultation</h3>
-                    <p>Book a free, no-obligation consultation where our expert visits your space, understands your needs, and guides you through the best window solutions.</p>
                   </div></div>
                 <img
                   src="/images/Frame 162.png"
@@ -294,7 +300,6 @@ export default function Home() {
                 <div className="step-number-overlay">02
                   <div className="step-content">
                     <h3>Get Measured</h3>
-                    <p>We take accurate, professional measurements to ensure your curtains or blinds fit perfectly and function flawlessly.</p>
                   </div>
                 </div>
                 <img
@@ -312,7 +317,6 @@ export default function Home() {
                 <div className="step-number-overlay">03
                   <div className="step-content">
                     <h3>Choose Your Fabric</h3>
-                    <p>Select from a curated range of premium fabrics, textures, and styles, with expert advice to match your interiors and preferences.</p>
                   </div>
                 </div>
                 <img
@@ -330,7 +334,6 @@ export default function Home() {
                 <div className="step-number-overlay">04
                   <div className="step-content">
                     <h3>Quick Installation</h3>
-                    <p>Once ready, our team handles a smooth and timely installation, ensuring a clean finish and minimal disruption to your space.</p>
                   </div>
                 </div>
                 <img
