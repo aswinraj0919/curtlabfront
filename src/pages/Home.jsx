@@ -137,27 +137,27 @@ export default function Home() {
 
   // loderImg disappear after 5 sec
 
-  // useEffect(() => {
-  //   const loaderImg = document.querySelector('.loaderImg');
+  useEffect(() => {
+    const loaderImg = document.querySelector('.loaderImg');
 
-  //   // Set transition first
-  //   loaderImg.style.transition = 'opacity 1s ease';
+    // Set transition first
+    loaderImg.style.transition = 'opacity 1s ease';
 
-  //   setTimeout(() => {
-  //     // First fade out
-  //     loaderImg.style.opacity = '0';
+    setTimeout(() => {
+      // First fade out
+      loaderImg.style.opacity = '0';
 
-  //     // Then hide after transition completes
-  //     setTimeout(() => {
-  //       loaderImg.style.display = 'none';
-  //     }, 500); // Match this with transition duration
-  //   }, 5000);
+      // Then hide after transition completes
+      setTimeout(() => {
+        loaderImg.style.display = 'none';
+      }, 500); // Match this with transition duration
+    }, 5000);
 
-  //   // Cleanup function
-  //   return () => {
-  //     // Clear timeouts if component unmounts
-  //   };
-  // }, []); // Empty dependency array
+    // Cleanup function
+    return () => {
+      // Clear timeouts if component unmounts
+    };
+  }, []); // Empty dependency array
 
   const [homeCurrentImageIndex, setHomeCurrentImageIndex] = useState(0);
 
@@ -183,7 +183,7 @@ export default function Home() {
 
   return (
     <div className="home-page">
-      {/* <video className="loaderImg" src="/images/loader.mp4" autoPlay muted></video> */}
+      <video className="loaderImg" src="/images/loader.mp4" autoPlay muted></video>
       <Header />
 
       {/* Hero Section */}
