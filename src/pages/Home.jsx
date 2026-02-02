@@ -137,16 +137,31 @@ export default function Home() {
 
   // loderImg disappear after 5 sec
 
-  useEffect(() => {
-    const loderImg = document.querySelector('.loderImg');
+useEffect(() => {
+  const loaderImg = document.querySelector('.loaderImg');
+  
+  // Set transition first
+  loaderImg.style.transition = 'opacity 1s ease';
+  
+  setTimeout(() => {
+    // First fade out
+    loaderImg.style.opacity = '0';
+    
+    // Then hide after transition completes
     setTimeout(() => {
-      loderImg.style.display = 'none';
-    }, 8000)
-  })
+      loaderImg.style.display = 'none';
+    }, 500); // Match this with transition duration
+  }, 5000);
+  
+  // Cleanup function
+  return () => {
+    // Clear timeouts if component unmounts
+  };
+}, []); // Empty dependency array
 
   return (
     <div className="home-page">
-        <video className="loderImg" src="/images/loder.mp4" autoPlay muted></video>
+      <video className="loaderImg" src="/images/loader.mp4" autoPlay muted></video>
       <Header />
 
       {/* Hero Section */}
@@ -163,9 +178,12 @@ export default function Home() {
 
         <div className="hero-content">
           <h1 className="hero-title">
-            <span className="title-simple">Simple</span>
-            <span className="title-solutions">solutions for every</span>
-            <span className="title-window">window.</span>
+            {/* <span className="title-simple">Simple</span>
+            <span className="title-solutions">solutions for every</span> */}
+            <span className="title-window">Simple
+              solution
+              <br />for  every
+              window.</span>
           </h1>
 
           <p className="hero-subtitle">
