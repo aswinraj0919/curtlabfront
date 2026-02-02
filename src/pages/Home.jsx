@@ -137,42 +137,67 @@ export default function Home() {
 
   // loderImg disappear after 5 sec
 
-useEffect(() => {
-  const loaderImg = document.querySelector('.loaderImg');
-  
-  // Set transition first
-  loaderImg.style.transition = 'opacity 1s ease';
-  
-  setTimeout(() => {
-    // First fade out
-    loaderImg.style.opacity = '0';
-    
-    // Then hide after transition completes
-    setTimeout(() => {
-      loaderImg.style.display = 'none';
-    }, 500); // Match this with transition duration
-  }, 5000);
-  
-  // Cleanup function
-  return () => {
-    // Clear timeouts if component unmounts
-  };
-}, []); // Empty dependency array
+  // useEffect(() => {
+  //   const loaderImg = document.querySelector('.loaderImg');
+
+  //   // Set transition first
+  //   loaderImg.style.transition = 'opacity 1s ease';
+
+  //   setTimeout(() => {
+  //     // First fade out
+  //     loaderImg.style.opacity = '0';
+
+  //     // Then hide after transition completes
+  //     setTimeout(() => {
+  //       loaderImg.style.display = 'none';
+  //     }, 500); // Match this with transition duration
+  //   }, 5000);
+
+  //   // Cleanup function
+  //   return () => {
+  //     // Clear timeouts if component unmounts
+  //   };
+  // }, []); // Empty dependency array
+
+  const [homeCurrentImageIndex, setHomeCurrentImageIndex] = useState(0);
+
+  const homeImages = [
+    "/images/1.png",
+    "/images/2.png",
+    // "/images/3.png",
+    // "/images/4.png",
+    // "/images/5.png",
+    // "/images/6.png"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHomeCurrentImageIndex((prevIndex) =>
+        prevIndex === homeImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 2000); // Change every 2 seconds (2000ms)
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [homeImages.length]);
+
 
   return (
     <div className="home-page">
-      <video className="loaderImg" src="/images/loader.mp4" autoPlay muted></video>
+      {/* <video className="loaderImg" src="/images/loader.mp4" autoPlay muted></video> */}
       <Header />
 
       {/* Hero Section */}
       <section className="hero-section" aria-label="Hero section">
         <div className="hero-background">
-          <img
-            src="/images/hero-bg-1.jpg"
-            alt="Beautiful window with curtains in a modern living room"
-            className="hero-bg-image"
-            loading="eager"
-          />
+          {homeImages.map((image, index) => (
+        <img
+          key={index}
+          src={image}
+          alt={`Background ${index + 1}`}
+          className={`main-bg-image ${index === homeCurrentImageIndex ? 'active' : ''}`}
+          loading={index === 0 ? "eager" : "lazy"}
+        />
+      ))}
           <div className="hero-overlay"></div>
         </div>
 
