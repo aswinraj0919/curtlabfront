@@ -152,7 +152,6 @@ export default function Bottom() {
                 <section className="contact-section" id="contact" aria-label="Contact us">
                     <div className="contact-container">
                         <div className="contact-form-wrapper">
-                            <button className='btn btn-submit'>Get in touch</button>
                             <h3>Get in touch with us</h3>
 
                             {submitMessage && (
