@@ -175,7 +175,7 @@ export default function Home() {
       setHomeCurrentImageIndex((prevIndex) =>
         prevIndex === homeImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, 2000); // Change every 2 seconds (2000ms)
+    }, 5000); // Change every 2 seconds (2000ms)
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, [homeImages.length]);
@@ -205,7 +205,7 @@ export default function Home() {
           <h1 className="hero-title">
             {/* <span className="title-simple">Simple</span>
             <span className="title-solutions">solutions for every</span> */}
-            <span className="title-window">Simple
+            <span className="title-window">Simple <br />
               solution
               <br />for  every
               window.</span>
