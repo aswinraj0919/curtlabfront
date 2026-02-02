@@ -2007,6 +2007,10 @@ p {
     padding: 12px 24px;
     font-size: 16px;
   }
+
+  .link{
+        grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 
