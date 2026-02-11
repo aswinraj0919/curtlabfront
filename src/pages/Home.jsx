@@ -7,6 +7,7 @@ import './style.css';
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [pageLoaded, setPageLoaded] = useState(false);
   const location = useLocation();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [hoveredProductId, setHoveredProductId] = useState(null);
@@ -20,6 +21,11 @@ export default function Home() {
       const contentHeight = ref.current.scrollHeight;
       setHeight(`${contentHeight + 100}px`);
     }
+  }, []);
+
+  // Trigger fade-in animation when component mounts
+  useEffect(() => {
+    setPageLoaded(true);
   }, []);
 
   const products = [
@@ -152,14 +158,14 @@ export default function Home() {
       setHomeCurrentImageIndex((prevIndex) =>
         prevIndex === homeImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, 5000); // Change every 2 seconds (2000ms)
+    }, 5000); // Change every 5 seconds
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, [homeImages.length]);
 
 
   return (
-    <div className="home-page">
+    <div className={`home-page ${pageLoaded ? 'fade-in' : ''}`}>
       <Header />
 
       {/* Hero Section */}
@@ -179,8 +185,6 @@ export default function Home() {
 
         <div className="hero-content">
           <h1 className="hero-title">
-            {/* <span className="title-simple">Simple</span>
-            <span className="title-solutions">solutions for every</span> */}
             <span className="title-window">Simple <br />
               solution
               <br />for  every
@@ -199,8 +203,6 @@ export default function Home() {
       </section>
 
       {/* Collections Section */}
-
-
       <section className='collections-section'>
         <div className="about-content products">
           <h1>Our Products</h1>
@@ -302,7 +304,7 @@ export default function Home() {
               <div className="step-image-wrapper step-1">
                 <div className="step-number-overlay">01
                   <div className="step-content">
-                    <h3>Book Your Free Consultation</h3>
+                    <h3>Book Your Free <br /> Consultation</h3>
                   </div></div>
                 <img
                   src="/images/Frame 162.png"
@@ -318,7 +320,7 @@ export default function Home() {
               <div className="step-image-wrapper step-2">
                 <div className="step-number-overlay">02
                   <div className="step-content">
-                    <h3>Get Measured</h3>
+                    <h3>Get <br />Measured</h3>
                   </div>
                 </div>
                 <img
@@ -335,7 +337,7 @@ export default function Home() {
               <div className="step-image-wrapper">
                 <div className="step-number-overlay">03
                   <div className="step-content">
-                    <h3>Choose Your Fabric</h3>
+                    <h3>Choose <br />Your Fabric</h3>
                   </div>
                 </div>
                 <img
@@ -352,7 +354,7 @@ export default function Home() {
               <div className="step-image-wrapper step-4">
                 <div className="step-number-overlay">04
                   <div className="step-content">
-                    <h3>Quick Installation</h3>
+                    <h3>Quick <br /> Installation</h3>
                   </div>
                 </div>
                 <img
@@ -364,25 +366,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-
-          <div className='promo-banner'>
-            <div className='promo-step-1'>
-              <h1>“Proudly Tailored in UAE”</h1>
-            </div>
-            <div className='promo-step-2'>
-              <h2>Book your slot now</h2>
-              <button className='btn btn-secondary promo' onClick={handleBookNow}>Book Now <svg width="15" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253f4b" stroke-width="0.567822" stroke-linecap="round" />
-                <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253f4b" stroke-width="0.567822" stroke-linecap="round" />
-                <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253f4b" stroke-width="0.567822" stroke-linecap="round" />
-              </svg>
-              </button>
-            </div>
-          </div>
-
         </div>
       </section>
+      
       {showPopup && selectedProduct && (
         <div
           className="popup-overlay"
@@ -440,7 +426,6 @@ export default function Home() {
               <div className="popup-details">
                 <h1 id="popup-title" className="popup-product-name">{selectedProduct.name}</h1>
                 <div className="popup-description">
-
                   {selectedProduct.content.split(' >').map((sentence, index) => (
                     <p key={index} className="popup-sentence">
                       {sentence.trim()}
@@ -449,7 +434,6 @@ export default function Home() {
                   ))}
                   <h3>Book Your Free Consultation Here</h3>
                 </div>
-                {/* <div className="popup-actions"> */}
                 <button
                   className="btn btn-popup-book"
                   onClick={handleBookNow}
@@ -461,7 +445,6 @@ export default function Home() {
                     <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" stroke-width="0.567822" stroke-linecap="round" />
                   </svg>
                 </button>
-                {/* </div> */}
               </div>
             </div>
           </div>
@@ -469,7 +452,6 @@ export default function Home() {
       )}
 
       <Bottom />
-
     </div>
   );
 }
