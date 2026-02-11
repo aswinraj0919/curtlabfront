@@ -4,8 +4,6 @@ import Home from './pages/Home';
 import Products from './pages/Products';
 import About from './pages/About';
 import Contact from './pages/contact';
-import Curtains from './pages/Curtains';
-import Blinds from './pages/Blinds';
 import Blogs from './pages/blogs';
 import Blog from './pages/blog';
 import Gallery from './pages/gallery';
@@ -58,8 +56,6 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/loader" element={<Loader />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/products/curtains" element={<Curtains />} />
-        <Route path="/products/blinds" element={<Blinds />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blogs" element={<Blogs />} />
