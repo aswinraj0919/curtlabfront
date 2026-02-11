@@ -117,19 +117,28 @@
 
 /* Full page fade-in animation */
 .home-page,
-.about-page {
+.about-page,
+.products-page,
+.gallery,
+.bottom {
   opacity: 0;
   transition: opacity 0.6s ease-in-out;
 }
 
 .home-page.fade-in,
-.about-page.fade-in {
+.about-page.fade-in,
+.products-page.fade-in,
+.gallery.fade-in,
+.bottom.fade-in {
   opacity: 1;
 }
 
 /* Ensure smooth transitions for all content */
 .home-page *,
-.about-page * {
+.about-page *
+.products-page *,
+.gallery *,
+.bottom * {
   transition: opacity 0.3s ease-in-out;
 }
 

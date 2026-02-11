@@ -12,6 +12,11 @@ export default function Products() {
   const [activeFilter, setActiveFilter] = useState('all'); // 'all', 'curtains', 'blinds'
   const ref = useRef(null);
   const [height, setHeight] = useState('auto');
+  const [pageLoaded, setPageLoaded] = useState(false);
+
+  useEffect(() => {
+    setPageLoaded(true);
+  }, []);
 
   useEffect(() => {
     if (ref.current) {
@@ -154,228 +159,230 @@ export default function Products() {
   };
 
   return (
-    <div className="products-page">
+    <div>
       <Header />
-      <ProductsHead />
+      <div className={`products-page ${pageLoaded ? 'fade-in' : ''}`}>
+        <ProductsHead />
 
-      {/* Products Grid Section */}
-      <section className="products-grid-section" aria-label="Product collections">
-        <div className='about-content products'>
-          <h1>Shop by Categories</h1>
-          <div className='products-grid category'>
-            <div className='category-item'>
-              <div className='category-name'>
-                <h2>Curtain's</h2>
-                <button
-                  className={`btn btn-secondary product ${activeFilter === 'curtains' ? 'active' : ''}`}
-                  onClick={() => handleFilterClick('curtains')}
-                >
-                  View Curtains
-                </button>
-              </div>
-              <img src="/images/Frame 69.png" alt="Curtains category" />
-            </div>
-            <div className='category-item'>
-              <div className='category-name'>
-                <h2>Blind's</h2>
-                <button
-                  className={`btn btn-secondary product ${activeFilter === 'blinds' ? 'active' : ''}`}
-                  onClick={() => handleFilterClick('blinds')}
-                >
-                  View Blinds
-                </button>
-              </div>
-              <img src="/images/Frame 70.png" alt="Blinds category" />
-            </div>
-          </div>
-        </div>
-        <div className="products-container">
-          <div className="about-content products">
-            <h1>Our Products</h1>
-          </div>
-          <div className='select-Categories'>
-            <button
-              className={`filter-link ${activeFilter === 'all' ? 'active' : ''}`}
-              onClick={() => handleFilterClick('all')}
-            >
-              All Product's
-            </button>
-            <button
-              className={`filter-link ${activeFilter === 'curtains' ? 'active' : ''}`}
-              onClick={() => handleFilterClick('curtains')}
-            >
-              Curtains
-            </button>
-            <button
-              className={`filter-link ${activeFilter === 'blinds' ? 'active' : ''}`}
-              onClick={() => handleFilterClick('blinds')}
-            >
-              Blinds
-            </button>
-          </div>
-
-          <div className="products-grid">
-            {filteredProducts.map((product) => {
-              const currentImage = getCurrentImageForProduct(product.id) || product.images[0];
-
-              return (
-                <div key={product.id} className='collection-items'>
-                  <div
-                    className="product-image-container"
-                    onClick={(e) => handleProductImageClick(e, product)}
+        {/* Products Grid Section */}
+        <section className="products-grid-section" aria-label="Product collections">
+          <div className='about-content products'>
+            <h1>Shop by Categories</h1>
+            <div className='products-grid category'>
+              <div className='category-item'>
+                <div className='category-name'>
+                  <h2>Curtain's</h2>
+                  <button
+                    className={`btn btn-secondary product ${activeFilter === 'curtains' ? 'active' : ''}`}
+                    onClick={() => handleFilterClick('curtains')}
                   >
-                    <img src={currentImage} alt={product.name} />
+                    View Curtains
+                  </button>
+                </div>
+                <img src="/images/Frame 69.png" alt="Curtains category" />
+              </div>
+              <div className='category-item'>
+                <div className='category-name'>
+                  <h2>Blind's</h2>
+                  <button
+                    className={`btn btn-secondary product ${activeFilter === 'blinds' ? 'active' : ''}`}
+                    onClick={() => handleFilterClick('blinds')}
+                  >
+                    View Blinds
+                  </button>
+                </div>
+                <img src="/images/Frame 70.png" alt="Blinds category" />
+              </div>
+            </div>
+          </div>
+          <div className="products-container">
+            <div className="about-content products">
+              <h1>Our Products</h1>
+            </div>
+            <div className='select-Categories'>
+              <button
+                className={`filter-link ${activeFilter === 'all' ? 'active' : ''}`}
+                onClick={() => handleFilterClick('all')}
+              >
+                All Product's
+              </button>
+              <button
+                className={`filter-link ${activeFilter === 'curtains' ? 'active' : ''}`}
+                onClick={() => handleFilterClick('curtains')}
+              >
+                Curtains
+              </button>
+              <button
+                className={`filter-link ${activeFilter === 'blinds' ? 'active' : ''}`}
+                onClick={() => handleFilterClick('blinds')}
+              >
+                Blinds
+              </button>
+            </div>
 
-                    {/* Navigation arrows on product image */}
-                    {product.images.length > 1 && (
-                      <>
-                        <button
-                          className="product-nav-btn prev-btn"
-                          onClick={(e) => handlePrevImage(e, product.id)}
-                          aria-label="Previous image"
-                        >
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <div className="products-grid">
+              {filteredProducts.map((product) => {
+                const currentImage = getCurrentImageForProduct(product.id) || product.images[0];
+
+                return (
+                  <div key={product.id} className='collection-items'>
+                    <div
+                      className="product-image-container"
+                      onClick={(e) => handleProductImageClick(e, product)}
+                    >
+                      <img src={currentImage} alt={product.name} />
+
+                      {/* Navigation arrows on product image */}
+                      {product.images.length > 1 && (
+                        <>
+                          <button
+                            className="product-nav-btn prev-btn"
+                            onClick={(e) => handlePrevImage(e, product.id)}
+                            aria-label="Previous image"
+                          >
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </button>
+                          <button
+                            className="product-nav-btn next-btn"
+                            onClick={(e) => handleNextImage(e, product.id)}
+                            aria-label="Next image"
+                          >
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </button>
+                        </>
+                      )}
+
+                      {/* Image counter for multiple images */}
+                      {product.images.length > 1 && (
+                        <div className="image-counter">
+                          {hoveredProductId === product.id
+                            ? `${currentImageIndex + 1} / ${product.images.length}`
+                            : `1 / ${product.images.length}`}
+                        </div>
+                      )}
+                    </div>
+                    <div className="collection-content">
+                      <h1>{product.name}</h1>
+                      <p>{product.content.substring(0, 150)}...</p>
+                      <div className='collection-btn'>
+                        <button className='btn btn-secondary' onClick={handleBookNow}>
+                          Book Now
+                          <svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" strokeWidth="0.567822" strokeLinecap="round" />
+                            <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" strokeWidth="0.567822" strokeLinecap="round" />
+                            <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" strokeWidth="0.567822" strokeLinecap="round" />
                           </svg>
                         </button>
                         <button
-                          className="product-nav-btn next-btn"
-                          onClick={(e) => handleNextImage(e, product.id)}
-                          aria-label="Next image"
+                          className='btn btn-primary'
+                          onClick={() => handleKnowMoreClick(product)}
                         >
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          Know More
+                          <svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="0.283911" y1="4.54263" x2="17.8864" y2="4.54263" stroke="white" strokeWidth="0.567822" strokeLinecap="round" />
+                            <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="white" strokeWidth="0.567822" strokeLinecap="round" />
+                            <line x1="18.1704" y1="4.66018" x2="14.0293" y2="8.80124" stroke="white" strokeWidth="0.567822" strokeLinecap="round" />
                           </svg>
                         </button>
-                      </>
-                    )}
-
-                    {/* Image counter for multiple images */}
-                    {product.images.length > 1 && (
-                      <div className="image-counter">
-                        {hoveredProductId === product.id
-                          ? `${currentImageIndex + 1} / ${product.images.length}`
-                          : `1 / ${product.images.length}`}
                       </div>
-                    )}
-                  </div>
-                  <div className="collection-content">
-                    <h1>{product.name}</h1>
-                    <p>{product.content.substring(0, 150)}...</p>
-                    <div className='collection-btn'>
-                      <button className='btn btn-secondary' onClick={handleBookNow}>
-                        Book Now
-                        <svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" strokeWidth="0.567822" strokeLinecap="round" />
-                          <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" strokeWidth="0.567822" strokeLinecap="round" />
-                          <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" strokeWidth="0.567822" strokeLinecap="round" />
-                        </svg>
-                      </button>
-                      <button
-                        className='btn btn-primary'
-                        onClick={() => handleKnowMoreClick(product)}
-                      >
-                        Know More
-                        <svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <line x1="0.283911" y1="4.54263" x2="17.8864" y2="4.54263" stroke="white" strokeWidth="0.567822" strokeLinecap="round" />
-                          <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="white" strokeWidth="0.567822" strokeLinecap="round" />
-                          <line x1="18.1704" y1="4.66018" x2="14.0293" y2="8.80124" stroke="white" strokeWidth="0.567822" strokeLinecap="round" />
-                        </svg>
-                      </button>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Popup with Image Carousel */}
-      {showPopup && selectedProduct && (
-        <div
-          className="popup-overlay"
-          onClick={handlePopupOutsideClick}
-          aria-hidden={!showPopup}
-        >
-          <div className="products-grid product-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
-            <div className="popup-content">
-              <div className="popup-image-container">
-                <img
-                  src={selectedProduct.images[currentImageIndex]}
-                  alt={`${selectedProduct.name} - Image ${currentImageIndex + 1}`}
-                  className="popup-image"
-                />
+        {/* Popup with Image Carousel */}
+        {showPopup && selectedProduct && (
+          <div
+            className="popup-overlay"
+            onClick={handlePopupOutsideClick}
+            aria-hidden={!showPopup}
+          >
+            <div className="products-grid product-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+              <div className="popup-content">
+                <div className="popup-image-container">
+                  <img
+                    src={selectedProduct.images[currentImageIndex]}
+                    alt={`${selectedProduct.name} - Image ${currentImageIndex + 1}`}
+                    className="popup-image"
+                  />
 
-                {/* Navigation arrows for multiple images */}
-                {selectedProduct.images.length > 1 && (
-                  <>
-                    <button
-                      className="popup-nav-btn prev-btn"
-                      onClick={handlePrevImage}
-                      aria-label="Previous image"
-                    >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                    <button
-                      className="popup-nav-btn next-btn"
-                      onClick={handleNextImage}
-                      aria-label="Next image"
-                    >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                  </>
-                )}
-
-                {/* Image indicators/dots */}
-                {selectedProduct.images.length > 1 && (
-                  <div className="popup-image-indicators">
-                    {selectedProduct.images.map((_, index) => (
+                  {/* Navigation arrows for multiple images */}
+                  {selectedProduct.images.length > 1 && (
+                    <>
                       <button
-                        key={index}
-                        className={`popup-image-indicator ${index === currentImageIndex ? 'active' : ''}`}
-                        onClick={() => setCurrentImageIndex(index)}
-                        aria-label={`View image ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
+                        className="popup-nav-btn prev-btn"
+                        onClick={handlePrevImage}
+                        aria-label="Previous image"
+                      >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </button>
+                      <button
+                        className="popup-nav-btn next-btn"
+                        onClick={handleNextImage}
+                        aria-label="Next image"
+                      >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </button>
+                    </>
+                  )}
 
-              <div className="popup-details">
-                <h1 id="popup-title" className="popup-product-name">{selectedProduct.name}</h1>
-                <div className="popup-description">
-                  {selectedProduct.content.split(' >').map((sentence, index) => (
-                    <p key={index} className="popup-sentence">
-                      {sentence.trim()}
-                      {index < selectedProduct.content.split('').length - 1 ? '' : ''}
-                    </p>
-                  ))}
-                  <h3>Book Your Free Consultation Here</h3>
+                  {/* Image indicators/dots */}
+                  {selectedProduct.images.length > 1 && (
+                    <div className="popup-image-indicators">
+                      {selectedProduct.images.map((_, index) => (
+                        <button
+                          key={index}
+                          className={`popup-image-indicator ${index === currentImageIndex ? 'active' : ''}`}
+                          onClick={() => setCurrentImageIndex(index)}
+                          aria-label={`View image ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
-                <button
-                  className="btn btn-popup-book"
-                  onClick={handleBookNow}
-                >
-                  Book Now
-                  <svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" strokeWidth="0.567822" strokeLinecap="round" />
-                    <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" strokeWidth="0.567822" strokeLinecap="round" />
-                    <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" strokeWidth="0.567822" strokeLinecap="round" />
-                  </svg>
-                </button>
+
+                <div className="popup-details">
+                  <h1 id="popup-title" className="popup-product-name">{selectedProduct.name}</h1>
+                  <div className="popup-description">
+                    {selectedProduct.content.split(' >').map((sentence, index) => (
+                      <p key={index} className="popup-sentence">
+                        {sentence.trim()}
+                        {index < selectedProduct.content.split('').length - 1 ? '' : ''}
+                      </p>
+                    ))}
+                    <h3>Book Your Free Consultation Here</h3>
+                  </div>
+                  <button
+                    className="btn btn-popup-book"
+                    onClick={handleBookNow}
+                  >
+                    Book Now
+                    <svg width="15" height="20" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253F4B" strokeWidth="0.567822" strokeLinecap="round" />
+                      <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253F4B" strokeWidth="0.567822" strokeLinecap="round" />
+                      <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253F4B" strokeWidth="0.567822" strokeLinecap="round" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* Contact Section */}
-      <Bottom />
+        {/* Contact Section */}
+        <Bottom />
+      </div>
     </div>
   );
 }

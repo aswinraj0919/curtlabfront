@@ -1,16 +1,21 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import '../pages/style.css';
 
 export default function ProductsHead() {
-  
-    const handleBookNow = () => {
+  const [pageLoaded, setPageLoaded] = useState(false);
+
+  useEffect(() => {
+    setPageLoaded(true);
+  }, []);
+
+  const handleBookNow = () => {
     // Scroll to contact section or open booking modal
     const contactSection = document.getElementById('contact');
     contactSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="products-page">
+    <div className={`products-page ${pageLoaded ? 'fade-in' : ''}`}>
 
       {/* Hero Section */}
       <section className="products-hero" aria-label="Products hero section">

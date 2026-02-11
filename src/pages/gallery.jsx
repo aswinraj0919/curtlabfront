@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Lightbox from './Lightbox';
 import Header from '../components/Header';
 import Bottom from '../components/bottom';
@@ -6,6 +6,11 @@ import Bottom from '../components/bottom';
 function App() {
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+    const [pageLoaded, setPageLoaded] = useState(false);
+
+    useEffect(() => {
+        setPageLoaded(true);
+    }, []);
 
     const imageIds = [
         "11EQb6S00dfr2P1NdhINxFzVkqj5GAmen",
@@ -51,7 +56,7 @@ function App() {
     return (
         <div>
             <Header />
-            <div className="gallery">
+            <div className={`gallery ${pageLoaded ? 'fade-in' : ''}`}>
 
                 <div className="about-badge" aria-label="CurtLab since 2025">
                     <div className="badge-line"></div>
