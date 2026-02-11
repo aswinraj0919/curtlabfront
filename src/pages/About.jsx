@@ -39,7 +39,7 @@ export default function About() {
               <div className="badge-line"></div>
               <div className="badge-text">
                 <h3>CurtLab</h3>
-                <p>From 2025</p>
+                {/* <p>From 2025</p> */}
               </div>
             </div>
 
