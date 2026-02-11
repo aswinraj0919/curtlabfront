@@ -141,7 +141,7 @@ export default function Home() {
     };
   }, []);
 
-  
+
   const [homeCurrentImageIndex, setHomeCurrentImageIndex] = useState(0);
 
   const homeImages = [
@@ -149,8 +149,8 @@ export default function Home() {
     "/images/2.png",
     "/images/3.png",
     "/images/4.png",
-    // "/images/5.png",
-    // "/images/6.png"
+    "/images/5.png",
+    "/images/6.png"
   ];
 
   useEffect(() => {
@@ -172,14 +172,14 @@ export default function Home() {
       <section className="hero-section" aria-label="Hero section">
         <div className="hero-background">
           {homeImages.map((image, index) => (
-        <img
-          key={index}
-          src={image}
-          alt={`Background ${index + 1}`}
-          className={`main-bg-image ${index === homeCurrentImageIndex ? 'active' : ''}`}
-          loading={index === 0 ? "eager" : "lazy"}
-        />
-      ))}
+            <img
+              key={index}
+              src={image}
+              alt={`Background ${index + 1}`}
+              className={`main-bg-image ${index === homeCurrentImageIndex ? 'active' : ''}`}
+              loading={index === 0 ? "eager" : "lazy"}
+            />
+          ))}
           <div className="hero-overlay"></div>
         </div>
 
@@ -293,10 +293,10 @@ export default function Home() {
 
       {/* Why Us Section */}
       <section className="why-us-section" aria-label="Why choose us">
+        <div className=" about-content products ">
+          <h1>Why Us ?</h1>
+        </div>
         <div className="section-container">
-          <div className=" about-content products ">
-            <h1>Why Us ?</h1>
-          </div>
 
           <div className="why-us-grid">
             {/* Step 1 */}
@@ -366,9 +366,30 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <div className='promo-banner'>
+
+            <svg width="237" height="5" viewBox="0 0 237 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="237" height="5" rx="2.5" fill="#CCCBC0" />
+            </svg>
+
+            <h1>Proudly Tailored in UAE</h1>
+
+            <svg width="237" height="5" viewBox="0 0 237 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="237" height="5" rx="2.5" fill="#CCCBC0" />
+            </svg>
+
+            <button className='btn btn-secondary promo' onClick={handleBookNow}>Book your slot <svg width="15" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0.283911" y1="4.5425" x2="17.8864" y2="4.5425" stroke="#253f4b" stroke-width="0.567822" stroke-linecap="round" />
+              <line x1="14.0293" y1="0.283936" x2="18.1704" y2="4.425" stroke="#253f4b" stroke-width="0.567822" stroke-linecap="round" />
+              <line x1="18.1704" y1="4.6603" x2="14.0293" y2="8.80137" stroke="#253f4b" stroke-width="0.567822" stroke-linecap="round" />
+            </svg>
+            </button>
+
+          </div>
         </div>
       </section>
-      
+
       {showPopup && selectedProduct && (
         <div
           className="popup-overlay"

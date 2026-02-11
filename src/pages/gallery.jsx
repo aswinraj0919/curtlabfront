@@ -88,6 +88,7 @@ function App() {
                 )}
             </div>
             <Bottom />
+            <Bottom />
         </div>
     );
 }

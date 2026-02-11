@@ -116,17 +116,20 @@
 }
 
 /* Full page fade-in animation */
-.home-page {
+.home-page,
+.about-page {
   opacity: 0;
   transition: opacity 0.6s ease-in-out;
 }
 
-.home-page.fade-in {
+.home-page.fade-in,
+.about-page.fade-in {
   opacity: 1;
 }
 
 /* Ensure smooth transitions for all content */
-.home-page * {
+.home-page *,
+.about-page * {
   transition: opacity 0.3s ease-in-out;
 }
 
@@ -139,6 +142,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -277,11 +281,11 @@
 .products-badge,
 .about-badge {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0;
   padding: 15px 20px;
   border-radius: 10px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
 }
 
 .badge-line {
@@ -844,6 +848,9 @@ p {
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .why-us-header {
@@ -885,13 +892,7 @@ p {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-.step-image-wrapper.step-1 {
-  border-radius: 25px 0 0 0;
-}
 
-.step-image-wrapper.step-4 {
-  border-radius: 0 25px 0 0;
-}
 
 .step-number-overlay {
   position: absolute;
@@ -960,44 +961,29 @@ p {
 
 /* Promo Banner */
 .promo-banner {
-  background-image: url('../../public/images/Frame166.png');
+  /* background-image: url('../../public/images/Frame166.png'); */
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin: 20px 0;
-  background-size: cover;
-  height: 200px;
-  background-position: left;
-  border-radius: 0 0 25px 25px;
   padding: 20px;
-  position: relative;
-}
-
-.promo-step-1 {
-  position: relative;
-  z-index: 1;
+  gap: 20px;
 }
 
 .promo-banner h1 {
-  color: var(--white);
+  font-family: 'Faculty Glyphic', sans-serif;
+  color: var(--text-color);
   font-size: 40px;
   font-weight: 500;
   margin: 0;
-}
-
-.promo-step-2 {
-  display: flex;
-  gap: 20px;
-  align-items: flex-end;
-  z-index: 1;
-  height: 100%;
 }
 
 .promo-step-2 h2 {
   font-family: 'Faculty Glyphic', sans-serif;
   font-size: 36px;
   font-weight: 400;
-  color: var(--white);
+  color: var(--text-color);
 }
 
 /* Features Section */
@@ -1663,18 +1649,6 @@ p {
     gap: 40px;
   }
 
-  .step-image-wrapper.step-1 {
-    border-radius: 25px 0 0 0;
-  }
-
-  .step-image-wrapper.step-2 {
-    border-radius: 0 25px 0 0;
-  }
-
-  .step-image-wrapper.step-4 {
-    border-radius: 0;
-  }
-
   .products-hero-content,
   .about-hero-content {
     margin-left: 100px;
@@ -1688,19 +1662,6 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-  }
-
-  .step-image-wrapper.step-1 {
-    border-radius: 25px 25px 0 0;
-  }
-
-  .step-image-wrapper.step-2 {
-    border-radius: 0;
-
-  }
-
-  .step-image-wrapper.step-4 {
-    border-radius: 0;
   }
 
   .promo-step-1,
@@ -2125,9 +2086,11 @@ p {
 }
 
 .btn.btn-secondary.promo {
-  background-color: var(--white);
-  color: var(--gray-dark);
-  font-weight: 600;
+  font-family: "NHaasGrotesk";
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 /* Image counter */
@@ -2904,6 +2867,7 @@ p {
   height: 2px;
   background-color: #253F4B;
 }
+
 /* 
 .btn.btn-secondary.product.active {
   background-color: #253F4B;
@@ -2934,10 +2898,10 @@ p {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-    border-radius: 0 25px 25px 0;
+  border-radius: 0 25px 25px 0;
 
 }
 
-.contact-info{
+.contact-info {
   width: 50%;
 }

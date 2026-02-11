@@ -29,7 +29,7 @@ export default function ProductsHead() {
             <div className="badge-line"></div>
             <div className="badge-text">
               <h3>CurtLab</h3>
-              <p>Collections 2025</p>
+              {/* <p>Collections 2025</p> */}
             </div>
           </div>
 
