@@ -1910,6 +1910,10 @@ p {
     grid-template-columns: repeat(1, 1fr);
   }
 
+  .link svg {
+    width: 38px !important;
+}
+
 }
 
 @media (max-width: 480px) {
@@ -2913,4 +2917,8 @@ p {
 
 .contact-info {
   width: 50%;
+}
+
+.link svg {
+    width: 45px;
 }
