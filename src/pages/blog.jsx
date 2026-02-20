@@ -24,11 +24,10 @@ export default function Blog() {
                 </div>
 
                 <div className="about-hero-content">
-                    <div className="about-badge" aria-label="CurtLab since 2025">
+                    <div className="about-badge" aria-label="CurtLab since">
                         <div className="badge-line"></div>
                         <div className="badge-text">
                             <h3>CurtLab</h3>
-                            <p>From 2025</p>
                         </div>
                     </div>
 
