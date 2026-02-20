@@ -7,7 +7,6 @@ import './style.css';
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [pageLoaded, setPageLoaded] = useState(false);
   const location = useLocation();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [hoveredProductId, setHoveredProductId] = useState(null);
@@ -15,6 +14,16 @@ export default function Home() {
 
   const ref = useRef(null);
   const [height, setHeight] = useState('auto');
+  const [pageLoaded, setPageLoaded] = useState(false);
+
+  useEffect(() => {
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      setPageLoaded(true);
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (ref.current) {
@@ -23,10 +32,6 @@ export default function Home() {
     }
   }, []);
 
-  // Trigger fade-in animation when component mounts
-  useEffect(() => {
-    setPageLoaded(true);
-  }, []);
 
   const products = [
     { id: 1, name: 'Sheer Curtains', content: 'Sheer curtains are crafted from lightweight, translucent fabrics that gently filter sunlight, creating a calm and welcoming atmosphere. They soften natural light, offering daytime privacy without blocking your outdoor view. Ideal for living rooms, dining areas, and balconies, sheer curtains add elegance and movement to any space while complementing any interior style.', images: ['/images/product-1.jpg'] },

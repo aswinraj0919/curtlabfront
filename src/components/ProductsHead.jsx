@@ -5,7 +5,12 @@ export default function ProductsHead() {
   const [pageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
-    setPageLoaded(true);
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      setPageLoaded(true);
+    }, 50);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleBookNow = () => {

@@ -14,11 +14,17 @@ export default function Bottom() {
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitMessage, setSubmitMessage] = useState('');
-    const [pageLoaded, setPageLoaded] = useState(false);
     const [touchedFields, setTouchedFields] = useState({});
 
+    const [pageLoaded, setPageLoaded] = useState(false);
+
     useEffect(() => {
-        setPageLoaded(true);
+        // Small delay to ensure DOM is ready
+        const timer = setTimeout(() => {
+            setPageLoaded(true);
+        }, 50);
+
+        return () => clearTimeout(timer);
     }, []);
 
     // Replace this with your actual Google Form ID
@@ -53,7 +59,7 @@ export default function Bottom() {
 
     const validateField = (name, value) => {
         const trimmedValue = value.trim();
-        
+
         switch (name) {
             case 'firstName':
             case 'lastName':
@@ -117,7 +123,7 @@ export default function Bottom() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        
+
         // Update form data
         setFormData(prev => ({
             ...prev,
@@ -135,7 +141,7 @@ export default function Bottom() {
 
     const handleBlur = (e) => {
         const { name, value } = e.target;
-        
+
         // Mark field as touched
         setTouchedFields(prev => ({
             ...prev,
@@ -164,7 +170,7 @@ export default function Bottom() {
         });
 
         setErrors(newErrors);
-        
+
         // Mark all fields as touched
         const allTouched = {};
         Object.keys(formData).forEach(key => {
@@ -177,11 +183,11 @@ export default function Bottom() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         // Validate form before submission
         if (!validateForm()) {
             setSubmitMessage('Please fix the errors in the form before submitting.');
-            
+
             // Scroll to the first error
             const firstError = document.querySelector('.error-message');
             if (firstError) {
@@ -241,7 +247,7 @@ export default function Bottom() {
     // Alternative method using hidden iframe
     const handleSubmitAlternative = (e) => {
         e.preventDefault();
-        
+
         // Validate form before submission
         if (!validateForm()) {
             setSubmitMessage('Please fix the errors in the form before submitting.');
